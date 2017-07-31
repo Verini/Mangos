@@ -9,6 +9,6 @@ package mangos;
  *
  * @author Andrés
  */
-public class Numero {
+public class Numero {preuasdfasf
     
 }
