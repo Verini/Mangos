@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -70,3 +71,19 @@ public class Numero {
     
     
 }
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mangos;
+
+/**
+ *
+ * @author Andrés
+ */
+public class Numero {preuasdfasf
+    
+}
+>>>>>>> dc88f1047b68bd31974f9e38e37d7801e5e000b6
