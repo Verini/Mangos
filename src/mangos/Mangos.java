@@ -16,6 +16,26 @@ public class Mangos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+              Numero[] Ruleta = new Numero[36];
+              
+                        
+
+        
+
+       
+
+            
+
+          
+                for(int i=0;i < Ruleta.length ;i++){
+                        Ruleta[i] = new Numero();
+                        System.out.println(Ruleta[i].getValor());
+                }
+                
+          
+            
+              
+        
     }
     
 }
