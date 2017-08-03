@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mangos;
 
 /**
@@ -11,10 +5,10 @@ package mangos;
  * @author Andrés
  */
 public class Numero {
-    
-    static private int contador= 1;
+
+    static private int contador = 1;
     static private boolean col = true;
-    
+
     private int valor;
     private boolean par;    //0 Impar, 1 Par
     private boolean color;  //0 Negro , 1 Rojo
@@ -23,7 +17,7 @@ public class Numero {
     private int mitad;
     private int fila;
 
-/*    public Numero(int valor, boolean par, boolean color, int decena, int columna, int mitad, int fila) {
+    /*    public Numero(int valor, boolean par, boolean color, int decena, int columna, int mitad, int fila) {
         contador++;
         this.valor = contador;
         this.par = par;
@@ -33,57 +27,60 @@ public class Numero {
         this.mitad = mitad;
         this.fila = fila;
     }*/
- 
-    public Numero(){
-        this.valor=contador;
+    public Numero() {
+        this.valor = contador;
         contador++;
         this.par = paridad();
         this.color = colores();
-            
+        this.decena = decena();
+        this.mitad = mitad();
+
     }
-    
-    private boolean paridad(){
-        if (this.valor%2==0)
+
+    private boolean paridad() {
+        if (this.valor % 2 == 0) {
             return true;
-        else
+        } else {
             return false;
+        }
+    }
+
+    private boolean colores() {
+
+        boolean rcol = this.col;
+
+        return rcol;
+
+    }
+
+    private int decena() {
+
+        int doc;
+
+        if (this.valor < 13) {
+            doc = 1;
+        } else if (this.valor < 25) {
+            doc = 2;
+        } else {
+            doc = 3;
+        }
+
+        return doc;
+    }
+
+    private int mitad(){
+        int mit;
+        
+        if(this.valor < 19 ){
+            mit = 1;  
+        }else {
+            mit = 2;
+        }
+        return mit;
     }
     
-    private boolean colores(){
-        
-        boolean rcol= this.col;
-        
-      
-
-        return rcol; 
-        
-    }
-    
-    
-    
-    
-    
-
     public int getValor() {
         return valor;
     }
-    
-    
-    
-}
-=======
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package mangos;
 
-/**
- *
- * @author Andrés
- */
-public class Numero {preuasdfasf
-    
 }
->>>>>>> dc88f1047b68bd31974f9e38e37d7801e5e000b6
