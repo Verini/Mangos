@@ -8,6 +8,8 @@ public class Numero {
 
     static private int contador = 1;
     static private boolean col = true;
+    static private int colum = 1;
+    static private int linea = 0;
 
     private int valor;
     private boolean par;    //0 Impar, 1 Par
@@ -32,8 +34,12 @@ public class Numero {
         contador++;
         this.par = paridad();
         this.color = colores();
+        col = !col;
+        this.columna = columnas();
+        colum++;
         this.decena = decena();
         this.mitad = mitad();
+        this.fila = filas();
 
     }
 
@@ -45,12 +51,22 @@ public class Numero {
         }
     }
 
-    private boolean colores() {
-
-        boolean rcol = this.col;
-
-        return rcol;
-
+    private boolean colores() {   
+         if (this.valor == 11){
+            this.col = false;
+            return false;
+        }
+        else if(this.valor == 19){
+            this.col = true;
+            return true;
+        }
+        
+        else if(this.valor == 29){
+            this.col = false;
+            return false;
+        }
+        else
+            return col;
     }
 
     private int decena() {
@@ -67,6 +83,15 @@ public class Numero {
 
         return doc;
     }
+    
+    private int columnas(){
+        if (this.colum == 4 ){
+            this.colum = 1;
+            return this.colum;
+        }
+        else
+            return this.colum;
+    }
 
     private int mitad(){
         int mit;
@@ -77,6 +102,13 @@ public class Numero {
             mit = 2;
         }
         return mit;
+    }
+    
+    private int filas(){
+        if(this.columna == 1){
+            this.linea++;
+        }
+        return this.linea;
     }
     
     public int getValor() {
