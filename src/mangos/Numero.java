@@ -115,4 +115,9 @@ public class Numero {
         return valor;
     }
 
+    @Override
+    public String toString() {
+        return "Numero{" + "valor=" + valor + ", par=" + par + ", color=" + color + ", decena=" + decena + ", columna=" + columna + ", mitad=" + mitad + ", fila=" + fila + '}';
+    }
+
 }

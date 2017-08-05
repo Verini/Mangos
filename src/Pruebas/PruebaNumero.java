@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Pruebas;
+import mangos.Analisis;
 import mangos.Numero;
 
 /**
@@ -13,6 +14,11 @@ import mangos.Numero;
 public class PruebaNumero {
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Analisis uno;
+       uno = new Analisis();
+        System.out.println(uno.toString());
+        
     }
     
 }
