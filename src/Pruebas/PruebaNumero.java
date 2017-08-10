@@ -19,6 +19,14 @@ public class PruebaNumero {
        uno = new Analisis();
         System.out.println(uno.toString());
         
+       
+        
+        
+       uno.setBasesDatosNuevoDato(5);
+       uno.VerList();
+       
+       uno.setBasesDatosNuevoDato(7);
+       uno.VerList();
     }
     
 }

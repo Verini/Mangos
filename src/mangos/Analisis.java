@@ -5,23 +5,77 @@
  */
 package mangos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  *
  * @author jai
  */
 public class Analisis {
-    Numero[] datos;
+    
+    private Numero[] datos;
+    private  ArrayList BasesDatos;
+
+
+    public void setBasesDatos(ArrayList BasesDatos) {
+        this.BasesDatos = BasesDatos;
+    }
+
+    public ArrayList getBasesDatos() {
+        return BasesDatos;
+    }
+       
+    public void setBasesDatosNuevoDato(int DatoNuevo){
+           this.BasesDatos.add(DatoNuevo);
+    }
+    
+   
+    
+    public void VerList() {
+        
+        for (int i=0; i< this.BasesDatos.size();i++)
+                 System.out.println(this.BasesDatos.get(i));
+    
+    }
+
+ /*
+    
+    import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+    
+    
+   public void mostrasListasNodo() {
+        Iterator<ListaNodo> it = getArraylisnodo().iterator();
+        ListaNodo temp = null;
+
+        while (it.hasNext()) {
+            //it.next().mostrarLista();
+
+            System.out.print(it.next());
+        }
+
+    }
+*/
     
     public Analisis() {
                
         this.datos = new Numero[37];
-        
+        this.BasesDatos =new ArrayList<>();
+         
         for (int i=1; i < this.datos.length  ;i++){
             this.datos[i] = new Numero();
             System.out.println(this.datos[i]);
         }
                     
     }
+    
+    
+    
+    
+    
 
     @Override
     public String toString() {
@@ -65,5 +119,10 @@ public class Analisis {
     public int contadorDocena1();
     public int contadorDocena2();
     public int contadorDocena3();*/
+    
+    
+    
+    /* Ver algo*/
+    
     
 }
