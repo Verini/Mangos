@@ -19,16 +19,6 @@ public class Numero {
     private int mitad;
     private int fila;
 
-    /*    public Numero(int valor, boolean par, boolean color, int decena, int columna, int mitad, int fila) {
-        contador++;
-        this.valor = contador;
-        this.par = par;
-        this.color = color;
-        this.decena = decena;
-        this.columna = columna;
-        this.mitad = mitad;
-        this.fila = fila;
-    }*/
     public Numero() {
         this.valor = contador;
         contador++;

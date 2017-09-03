@@ -5,6 +5,9 @@
  */
 package mangos;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  *
  * @author Andrés
@@ -16,22 +19,30 @@ public class Mangos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-              Numero[] Ruleta = new Numero[36];
+            Numero[] Ruleta = new Numero[36];
               
-                        
 
-        
-
-       
-
+            for(int i=0;i < Ruleta.length ;i++){
+                Ruleta[i] = new Numero();
+               // System.out.println(Ruleta[i].getValor());
+            }
             
-
-          
-                for(int i=0;i < Ruleta.length ;i++){
-                        Ruleta[i] = new Numero();
-                        System.out.println(Ruleta[i].getValor());
-                }
-                
+           
+           Random rand = new Random();
+           int x = rand.nextInt(100);
+           
+           ArrayList BasesDatos = new ArrayList<>();
+           for(int i=0;i <1000 ;i++){
+                   
+               BasesDatos.add((int)(Math.random()*(37-0)));
+              // System.out.println(BasesDatos.get(i));
+            
+           }
+           
+           
+           Analisis Juego =  new Analisis();
+           Juego.setBasesDatos(BasesDatos);
+           
           
             
               
