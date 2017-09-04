@@ -72,8 +72,23 @@ import java.util.Iterator;
                     
     }
     
+    public Analisis(ArrayList BasesDatos) {
+               
+        this.datos = new Numero[37];
+        this.BasesDatos = BasesDatos;
+         
+        for (int i=1; i < this.datos.length  ;i++){
+            this.datos[i] = new Numero();
+          //  System.out.println(this.datos[i]);
+        }
+        //this.verBasesDatos();
+                    
+    }
     
+    public void analisis(){
+               
     
+    }
     
     
 
@@ -86,6 +101,21 @@ import java.util.Iterator;
         }
         return valor;
     }
+    
+    
+    
+    public String verBasesDatos() {
+        String valor=""; 
+        for (int i=1; i < this.BasesDatos.size(); i++){
+            valor =  "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+            System.out.println(valor);
+        }
+        return valor;
+    }
+    
+    
+    
+    
     /*
     *  Funciones estandar mirar dentro del vect basedatos hacer un conteo
     */

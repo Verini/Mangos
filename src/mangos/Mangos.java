@@ -18,16 +18,7 @@ public class Mangos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-            Numero[] Ruleta = new Numero[36];
-              
-
-            for(int i=0;i < Ruleta.length ;i++){
-                Ruleta[i] = new Numero();
-               // System.out.println(Ruleta[i].getValor());
-            }
-            
-           
+                     
            Random rand = new Random();
            int x = rand.nextInt(100);
            
@@ -38,14 +29,9 @@ public class Mangos {
               // System.out.println(BasesDatos.get(i));
             
            }
-           
-           
-           Analisis Juego =  new Analisis();
-           Juego.setBasesDatos(BasesDatos);
-           
-          
-            
-              
+     
+           Analisis Juego =  new Analisis(BasesDatos);
+           Juego.analisis();            
         
     }
     

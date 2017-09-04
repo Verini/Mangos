@@ -5,6 +5,8 @@
  */
 package mangos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Andrés
@@ -12,23 +14,15 @@ package mangos;
 public class Estudio {
     
     
-    //columnas.
-      private int total_c1;
-      private int total_c2;
-      private int total_c3;
-      private int Mayo_seguidad_c1;
-      private int Mayo_seguidad_c2;
-      private int Mayo_seguidad_c3;
     
+      
+      
     
+    public Estudio( Numero[] datos, ArrayList BasesDatos){
+       
+    };
     
-    
-    
-    
-    
-    public Estudio(){
-    }
-    
+    @Override
     public String toString() {
         return this.toString();
     };
