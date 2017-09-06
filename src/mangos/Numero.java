@@ -21,16 +21,21 @@ public class Numero {
 
     public Numero() {
         this.valor = contador;
-        contador++;
-        this.par = paridad();
-        this.color = colores();
-        col = !col;
-        this.columna = columnas();
-        colum++;
-        this.decena = decena();
-        this.mitad = mitad();
-        this.fila = filas();
-
+        
+        if(contador == 0) {
+                 
+            contador++;
+        }else{
+            contador++;
+            this.par = paridad();
+            this.color = colores();
+            col = !col;
+            this.columna = columnas();
+            colum++;
+            this.decena = decena();
+            this.mitad = mitad();
+            this.fila = filas();
+        }
     }
 
     private boolean paridad() {
@@ -105,9 +110,14 @@ public class Numero {
         return valor;
     }
 
+    public int getColumna() {
+        return columna;
+    }
+
     @Override
     public String toString() {
         return "Numero{" + "valor=" + valor + ", par=" + par + ", color=" + color + ", decena=" + decena + ", columna=" + columna + ", mitad=" + mitad + ", fila=" + fila + '}';
     }
 
+    
 }

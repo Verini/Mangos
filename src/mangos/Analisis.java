@@ -16,8 +16,8 @@ import java.util.List;
 public class Analisis {
     
     private Numero[] datos;
-    private  ArrayList BasesDatos;
-
+    private  ArrayList<Integer> BasesDatos;
+    private Estudio Colum;
 
     public void setBasesDatos(ArrayList BasesDatos) {
         this.BasesDatos = BasesDatos;
@@ -63,7 +63,7 @@ import java.util.Iterator;
     public Analisis() {
                
         this.datos = new Numero[37];
-        this.BasesDatos =new ArrayList<>();
+        this.BasesDatos =new ArrayList<Integer>();
          
         for (int i=1; i < this.datos.length  ;i++){
             this.datos[i] = new Numero();
@@ -76,11 +76,25 @@ import java.util.Iterator;
                
         this.datos = new Numero[37];
         this.BasesDatos = BasesDatos;
-         
-        for (int i=1; i < this.datos.length  ;i++){
+              
+        for (int i=0; i < this.datos.length  ;i++){
             this.datos[i] = new Numero();
-          //  System.out.println(this.datos[i]);
+           // System.out.println(this.datos[i]);
+           
+         
+          
+             
         }
+        
+          this.Colum = new Columnas(this.datos, this.BasesDatos);
+        
+        
+        
+        
+        
+        
+         //System.out.println("akiii siii " + this.datos[this.BasesDatos.get(8)].getColumna());
+         
         //this.verBasesDatos();
                     
     }
@@ -106,11 +120,18 @@ import java.util.Iterator;
     
     public String verBasesDatos() {
         String valor=""; 
-        for (int i=1; i < this.BasesDatos.size(); i++){
+        for (int i=0; i < this.BasesDatos.size(); i++){
             valor =  "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
             System.out.println(valor);
+            
+          
         }
         return valor;
+    }
+    
+    public void verColumnasRepetidas(){
+        this.Colum.verTotalColumnas();
+        
     }
     
     

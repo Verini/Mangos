@@ -6,12 +6,15 @@
 package mangos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  * @author Andrés
  */
 public class Columnas extends Estudio{
+
+
       //columnas.
       private int total_c1;
       private int total_c2;
@@ -20,6 +23,7 @@ public class Columnas extends Estudio{
       private int Mayor_seguida_c1;
       private int Mayor_seguida_c2;
       private int Mayor_seguida_c3;
+      
       
       
       /**
@@ -55,12 +59,53 @@ public class Columnas extends Estudio{
       
     public Columnas(Numero[] datos, ArrayList BasesDatos) {
            super(datos, BasesDatos);
-        
+           this.total_c1 = 0;
+           this.total_c2 = 0;
+           this.total_c3 = 0;
+           this.totalC1();
+           this.totalC2();
+           this.totalC3();
     }
-           
-        
     
-     
-     
-       
+    private void totalC1(){
+
+        for(int i = 0 ; i < this.BasesDatos.size(); i++ ){
+            
+           if (datos[BasesDatos.get(i)].getColumna() == 1){
+                this.total_c1++;
+             
+           }    
+        }
+    }
+    
+    private void totalC2(){
+        for(int i = 0 ; i < this.BasesDatos.size(); i++ ){
+          
+            if (datos[BasesDatos.get(i)].getColumna() == 2){
+                this.total_c2++;
+            }    
+        }
+    }
+        
+    private void totalC3(){
+        for(int i = 0 ; i < this.BasesDatos.size(); i++ ){
+          
+            if (datos[BasesDatos.get(i)].getColumna() == 3){
+                this.total_c3++;
+            }    
+        }
+    }
+    
+    
+    public void verTotalColumnas(){
+        
+        
+        
+        System.out.println(this.total_c1 + "  " + this.total_c2 + "  " + this.total_c3);
+    }
+    
+
+
 }
+    
+    

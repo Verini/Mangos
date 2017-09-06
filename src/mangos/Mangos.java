@@ -23,15 +23,16 @@ public class Mangos {
            int x = rand.nextInt(100);
            
            ArrayList BasesDatos = new ArrayList<>();
-           for(int i=0;i <1000 ;i++){
+           for(int i=0;i <100 ;i++){
                    
                BasesDatos.add((int)(Math.random()*(37-0)));
-              // System.out.println(BasesDatos.get(i));
+           System.out.println(BasesDatos.get(i));
             
            }
      
            Analisis Juego =  new Analisis(BasesDatos);
-           Juego.analisis();            
+           Juego.analisis();
+           Juego.verColumnasRepetidas();
         
     }
     
