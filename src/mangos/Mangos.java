@@ -26,7 +26,7 @@ public class Mangos {
            for(int i=0;i <100 ;i++){
                    
                BasesDatos.add((int)(Math.random()*(37-0)));
-           System.out.println(BasesDatos.get(i));
+         //  System.out.println(BasesDatos.get(i));
             
            }
      

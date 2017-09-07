@@ -8,16 +8,15 @@ package mangos;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author jai
  */
 public class Analisis {
-    
+
     private Numero[] datos;
-    private  ArrayList<Integer> BasesDatos;
-    private Estudio Colum;
+    private ArrayList<Integer> BasesDatos;
+    private Estudio[] Colum;
 
     public void setBasesDatos(ArrayList BasesDatos) {
         this.BasesDatos = BasesDatos;
@@ -26,21 +25,20 @@ public class Analisis {
     public ArrayList getBasesDatos() {
         return BasesDatos;
     }
-       
-    public void setBasesDatosNuevoDato(int DatoNuevo){
-           this.BasesDatos.add(DatoNuevo);
-    }
-    
-   
-    
-    public void VerList() {
-        
-        for (int i=0; i< this.BasesDatos.size();i++)
-                 System.out.println(this.BasesDatos.get(i));
-    
+
+    public void setBasesDatosNuevoDato(int DatoNuevo) {
+        this.BasesDatos.add(DatoNuevo);
     }
 
- /*
+    public void VerList() {
+
+        for (int i = 0; i < this.BasesDatos.size(); i++) {
+            System.out.println(this.BasesDatos.get(i));
+        }
+
+    }
+
+    /*
     
     import java.util.ArrayList;
 import java.util.Collections;
@@ -58,89 +56,73 @@ import java.util.Iterator;
         }
 
     }
-*/
-    
+     */
     public Analisis() {
-               
+
         this.datos = new Numero[37];
-        this.BasesDatos =new ArrayList<Integer>();
-         
-        for (int i=1; i < this.datos.length  ;i++){
+        this.BasesDatos = new ArrayList<Integer>();
+
+        for (int i = 1; i < this.datos.length; i++) {
             this.datos[i] = new Numero();
             System.out.println(this.datos[i]);
         }
-                    
+
     }
-    
+
     public Analisis(ArrayList BasesDatos) {
-               
+
         this.datos = new Numero[37];
         this.BasesDatos = BasesDatos;
-              
-        for (int i=0; i < this.datos.length  ;i++){
+
+        for (int i = 0; i < this.datos.length; i++) {
             this.datos[i] = new Numero();
-           // System.out.println(this.datos[i]);
-           
-         
-          
-             
+            // System.out.println(this.datos[i]);
+
         }
         
-          this.Colum = new Columnas(this.datos, this.BasesDatos);
+        this.Colum  = new Estudio[2];
         
-        
-        
-        
-        
-        
-         //System.out.println("akiii siii " + this.datos[this.BasesDatos.get(8)].getColumna());
-         
+        this.Colum[0] = new Columnas(this.datos, this.BasesDatos);
+        this.Colum[1] = new Color(this.datos, this.BasesDatos);
+
+        //System.out.println("akiii siii " + this.datos[this.BasesDatos.get(8)].getColumna());
         //this.verBasesDatos();
-                    
     }
-    
-    public void analisis(){
-               
-    
+
+    public void analisis() {
+
     }
-    
-    
 
     @Override
     public String toString() {
-        String valor=""; 
-        for (int i=1; i < this.datos.length  ;i++){
-            valor =  "Analisis{" + "datos=" + this.datos[i] + '}';
-             System.out.println(valor);
-        }
-        return valor;
-    }
-    
-    
-    
-    public String verBasesDatos() {
-        String valor=""; 
-        for (int i=0; i < this.BasesDatos.size(); i++){
-            valor =  "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+        String valor = "";
+        for (int i = 1; i < this.datos.length; i++) {
+            valor = "Analisis{" + "datos=" + this.datos[i] + '}';
             System.out.println(valor);
-            
-          
         }
         return valor;
     }
-    
-    public void verColumnasRepetidas(){
-        this.Colum.verTotalColumnas();
-        
+
+    public String verBasesDatos() {
+        String valor = "";
+        for (int i = 0; i < this.BasesDatos.size(); i++) {
+            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+            System.out.println(valor);
+
+        }
+        return valor;
     }
-    
-    
-    
-    
+
+    public void verColumnasRepetidas() {
+        this.Colum[0].verTotalColumnas();
+        this.Colum[1].verTotalColumnas();
+
+    }
+
     /*
     *  Funciones estandar mirar dentro del vect basedatos hacer un conteo
-    */
-    /*
+     */
+ /*
     public int contadorPar();
     public int contadorImpar();
     
@@ -170,10 +152,5 @@ import java.util.Iterator;
     public int contadorDocena1();
     public int contadorDocena2();
     public int contadorDocena3();*/
-    
-    
-    
-    /* Ver algo*/
-    
-    
+ /* Ver algo*/
 }
