@@ -33,11 +33,11 @@ public class Mangos {
            Analisis Juego =  new Analisis(BasesDatos);
           // Juego.analisis();
           
-                Juego.toString();
+               // Juego.toString();
              
                 
                 ArrayList BasesDatoss = new ArrayList<>();
-           for(int i=0;i <6;i++){
+           for(int i=0;i <10;i++){
                    
                BasesDatoss.add((int)(Math.random()*(37-0)));
          //  System.out.println(BasesDatos.get(i));
@@ -47,8 +47,8 @@ public class Mangos {
                 
                 Juego.setBasesDatos(BasesDatoss);
                 
-                System.out.print("___________________________________________");
-                Juego.toString();
+                System.out.println("___________________________________________");
+              Juego.toString();
                 
                 Juego.verColumnas();
               

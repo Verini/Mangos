@@ -32,6 +32,32 @@ public class Columnas extends Estudio {
         return totalColumna;
     }
 
+    public int MayorSeguida(int columna,int num) {
+        int Mayor_seguida=0;
+        int cont1 = -1;
+        
+        for (int i = 0; i < this.BasesDatos.size(); i++) {
+            if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                  
+                      
+                   cont1++; 
+                       if(num == cont1){
+                          Mayor_seguida++; 
+
+                  }
+                  
+            
+            }else{
+             
+                  cont1 = -1;                                
+                  
+            }
+ 
+        }
+        return Mayor_seguida;
+    }
+    
+    
   
     public int MayorSeguida(int columna) {
         int Mayor_seguida=0;

@@ -60,15 +60,8 @@ public class Analisis {
        return ( this.Columna.toString());
     }
 
-    public String verBasesDatos() {
-       /* String valor = "";
-        for (int i = 0; i < this.BasesDatos.size(); i++) {
-            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
-            System.out.println(valor);
-
-        }*/
-        
-    }
+  
+    
 public String verColumnas() {
        
      System.out.println( "Columna 1 : " + this.Columna.totalColumna(1));
@@ -77,6 +70,22 @@ public String verColumnas() {
      System.out.println( "Mayor nuvero de veces seguidas Col 1 : " + this.Columna.MayorSeguida(1));
      System.out.println( "Mayor nuvero de veces seguidas Col 2 : " + this.Columna.MayorSeguida(2));
      System.out.println( "Mayor nuvero de veces seguidas Col 3 : " + this.Columna.MayorSeguida(3));
+     
+     int tam = this.Columna.MayorSeguida(1);
+     for (int i=0;i<=tam;i++){
+         System.out.println( "Col 1 . Veces repetidas iguales a "+ i + " " + this.Columna.MayorSeguida(1,i));
+     }
+     
+     tam = this.Columna.MayorSeguida(2);
+     for (int i=0;i<=tam;i++){
+         System.out.println( "Col 2 . Veces repetidas iguales a "+ i + " " + this.Columna.MayorSeguida(2,i));
+     }
+     
+     tam = this.Columna.MayorSeguida(3);
+     for (int i=0;i<=tam;i++){
+         System.out.println( "Col 3 . Veces repetidas iguales a "+ i + " " + this.Columna.MayorSeguida(3,i));
+     }
+     
     
         return "gcgcg";
  } 
