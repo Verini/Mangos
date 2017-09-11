@@ -23,7 +23,7 @@ public class Mangos {
            int x = rand.nextInt(100);
            
            ArrayList BasesDatos = new ArrayList<>();
-           for(int i=0;i <100 ;i++){
+           for(int i=0;i <10 ;i++){
                    
                BasesDatos.add((int)(Math.random()*(37-0)));
          //  System.out.println(BasesDatos.get(i));
@@ -31,9 +31,29 @@ public class Mangos {
            }
      
            Analisis Juego =  new Analisis(BasesDatos);
-           Juego.analisis();
-           Juego.verColumnasRepetidas();
-        
+          // Juego.analisis();
+          
+                Juego.toString();
+             
+                
+                ArrayList BasesDatoss = new ArrayList<>();
+           for(int i=0;i <6;i++){
+                   
+               BasesDatoss.add((int)(Math.random()*(37-0)));
+         //  System.out.println(BasesDatos.get(i));
+            
+           }    
+                
+                
+                Juego.setBasesDatos(BasesDatoss);
+                
+                System.out.print("___________________________________________");
+                Juego.toString();
+                
+                Juego.verColumnas();
+              
+                
+                
     }
     
 }

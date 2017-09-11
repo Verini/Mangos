@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author Andrés
  */
-public abstract class Estudio {
+public class Estudio {
 
-    public Numero[] datos;
-    protected ArrayList<Integer> BasesDatos;
+    protected Numero[] datos;
+    protected static ArrayList<Integer> BasesDatos;
     
     
     
@@ -25,21 +25,31 @@ public abstract class Estudio {
         this.datos = datos;
         this.BasesDatos = BasesDatos;
     }
-
-    ;
     
-    
-    
-    
-    
-    public abstract void verTotalColumnas();
-     
-     
+    public void setBasesDatos(ArrayList<Integer> BasesDatos) {
+        this.BasesDatos = BasesDatos;
+    }
+        
 
     @Override
     public String toString() {
-        return this.toString();
+         String valor = "";
+       /* for (int i = 0; i < this.datos.length; i++) {
+            valor = "Analisis{" + "datos=" + this.datos[i] + '}';
+            System.out.println(valor);
+        }*/
+        
+         for (int i = 0; i < this.BasesDatos.size(); i++) {
+            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+            System.out.println(valor);
+
+        }
+        
+        
+        
+        return valor;
+      
     }
-;
+
 
 }

@@ -6,7 +6,7 @@ package mangos;
  */
 public class Numero {
 
-    static private int contador = 1;
+    static private int contador = 0;
     static private boolean col = true;
     static private int colum = 1;
     static private int linea = 0;
