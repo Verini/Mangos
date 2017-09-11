@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Analisis.java</file>
+            <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Mangos.java</file>
+=======
             <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Columnas.java</file>
-            <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/Pruebas/PruebaNumero.java</file>
+            <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Color.java</file>
             <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Estudio.java</file>
             <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Analisis.java</file>
             <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Mangos.java</file>
             <file>file:/C:/Users/Andrés/Documents/NetBeansProjects/Mangos/src/mangos/Numero.java</file>
+>>>>>>> 159e4cd97a1c86e91aa6e5c2cb7f7346481a809f
         </group>
     </open-files>
 </project-private>
