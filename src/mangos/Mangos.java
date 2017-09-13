@@ -37,7 +37,7 @@ public class Mangos {
              
                 
                 ArrayList BasesDatoss = new ArrayList<>();
-           for(int i=0;i <40;i++){
+           for(int i=0;i <100;i++){
                    
                BasesDatoss.add((int)(Math.random()*(37-0)));
          //  System.out.println(BasesDatos.get(i));
@@ -48,11 +48,13 @@ public class Mangos {
                 Juego.setBasesDatos(BasesDatoss);
                 
                 System.out.println("___________________________________________");
-            //  Juego.toString();
+           // Juego.toString();
                 
                // Juego.verColumnas();
                 
-                Juego.verDosColumnas();
+                Juego.datosApuestaNoRepetir();
+                   System.out.println("___________________________________________");
+                //Juego.datosApuestaRepetir();
               
                 
                 

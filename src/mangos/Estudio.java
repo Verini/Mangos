@@ -40,7 +40,7 @@ public class Estudio {
         }*/
         
          for (int i = 0; i < this.BasesDatos.size(); i++) {
-            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + ','+ datos[BasesDatos.get(i)].getColumna()+'}';
             System.out.println(valor);
 
         }
