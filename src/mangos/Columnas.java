@@ -33,27 +33,7 @@ public class Columnas extends Estudio {
         return totalColumnaEn(1) + totalColumnaEn(2)+totalColumnaEn(3);
     }
     
-    public String verColumnas(){
-        String Valor = "";
-        int tTotal = this.totalColumna();
-        int tCol = this.totalColumnaEn(1);
-        Valor = "\nTotal de numeros: " + this.BasesDatos.size();
-        Valor =  Valor + "\nTotal que son 0: " + this.totalCero()+ "\n";
-        Valor = Valor + "Tatal que son columnas: " + tTotal + "\n";
-     
-        float por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 1: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
-        
-        tCol = this.totalColumnaEn(2);
-        por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 2: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
     
-        tCol = this.totalColumnaEn(3);
-        por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
-        System.out.println( Valor);
-        return Valor;
-    }
     
     
     
@@ -102,8 +82,22 @@ public class Columnas extends Estudio {
         return Mayor_seguida;
     }
 
- 
+ public int conteoDosColumnas(int col1,int col2){
+        return this.totalColumnaEn(col1) + this.totalColumnaEn(col2);
+ }
     
+
+ public boolean ganasApostandoDosCol(int col1,int col2){
+     
+           int fichasGan = this.totalColumnaEn(col1) + this.totalColumnaEn(col2);
+           
+           int cero = totalCero();
+           int fichasPer = ((totalColumna()-fichasGan) + cero)*2;
+           
+           int val = fichasGan - fichasPer ;
+           System.out.println("mierdddaa" + val);
+           return true;
+ }
 
     /**
      * Cantidad de 0 que hay en las tres columnas.

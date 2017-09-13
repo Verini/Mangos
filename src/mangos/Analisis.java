@@ -62,10 +62,10 @@ public class Analisis {
 
   
     
-public String verColumnas() {
+public String verColum() {
        
      
-  this.Columna.verColumnas();
+     this.verColumnas();
      
      System.out.println( "Mayor nuvero de veces seguidas Col 1: " + this.Columna.MayorSeguida(1));
      System.out.println( "Mayor nuvero de veces seguidas Col 2: " + this.Columna.MayorSeguida(2));
@@ -92,6 +92,61 @@ System.out.println( "Cantidad de ceros en Columna 1: " + this.Columna.totalCero(
 
 return "gcgcg";
  } 
+
+public String verColumnas(){
+        String Valor = "";
+        int tTotal = this.Columna.totalColumna();
+        int tCol = this.Columna.totalColumnaEn(1);
+        Valor = "\nTotal de numeros: " + this.Columna.getTamBasesDatos();
+        Valor =  Valor + "\nTotal que son 0: " + this.Columna.totalCero()+ "\n";
+        Valor = Valor + "Tatal que son columnas: " + tTotal + "\n";
+     
+        float por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tColumna 1: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Columna.totalColumnaEn(2);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tColumna 2: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+    
+        tCol = this.Columna.totalColumnaEn(3);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tColumna 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
+        System.out.println( Valor);
+        return Valor;
+    }
+
+
+/**
+ * Todas las apuestas y datos que sacamso de dos columnas.
+ * @return 
+ */
+public String verDosColumnas(){
+
+   return datosDosColumnas();
+}
+
+private String datosDosColumnas(){
+     String Valor = "\nConteo de dos columnas : \n";
+     
+     Valor = Valor +  "\tColumna 1,2: " + this.Columna.conteoDosColumnas(1, 2) + " Columna 3:"+ this.Columna.totalColumnaEn(3) +"\n";
+     
+     
+     
+     Valor = Valor +  "\tColumna 1,3: " + this.Columna.conteoDosColumnas(1, 3)+ " Columna 2:"+ this.Columna.totalColumnaEn(2) +"\n";
+     Valor = Valor +  "\tColumna 2,3: " + this.Columna.conteoDosColumnas(3, 2)+ " Columna 1:"+ this.Columna.totalColumnaEn(1) +"\n";
+     System.out.println( Valor);
+     
+     
+    this.Columna.ganasApostandoDosCol(1, 2);
+    this.Columna.ganasApostandoDosCol(3, 2);
+    this.Columna.ganasApostandoDosCol(1, 3);
+    
+    
+    return Valor;
+
+}
+
+
 
     /*
     *  Funciones estandar mirar dentro del vect basedatos hacer un conteo

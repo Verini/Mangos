@@ -50,7 +50,9 @@ public class Mangos {
                 System.out.println("___________________________________________");
             //  Juego.toString();
                 
-                Juego.verColumnas();
+               // Juego.verColumnas();
+                
+                Juego.verDosColumnas();
               
                 
                 
