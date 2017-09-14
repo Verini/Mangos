@@ -33,27 +33,7 @@ public class Columnas extends Estudio {
         return totalColumnaEn(1) + totalColumnaEn(2)+totalColumnaEn(3);
     }
     
-    public String verColumnas(){
-        String Valor = "";
-        int tTotal = this.totalColumna();
-        int tCol = this.totalColumnaEn(1);
-        Valor = "\nTotal de numeros: " + this.BasesDatos.size();
-        Valor =  Valor + "\nTotal que son 0: " + this.totalCero()+ "\n";
-        Valor = Valor + "Tatal que son columnas: " + tTotal + "\n";
-     
-        float por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 1: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
-        
-        tCol = this.totalColumnaEn(2);
-        por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 2: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
     
-        tCol = this.totalColumnaEn(3);
-        por= (float)((float)tCol/(float)tTotal)* 100;
-        Valor = Valor +  "\tColumna 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
-        System.out.println( Valor);
-        return Valor;
-    }
     
     
     
@@ -102,8 +82,22 @@ public class Columnas extends Estudio {
         return Mayor_seguida;
     }
 
- 
+ public int conteoDosColumnas(int col1,int col2){
+        return this.totalColumnaEn(col1) + this.totalColumnaEn(col2);
+ }
     
+
+ public boolean ganasApostandoDosCol(int col1,int col2){
+     
+           int fichasGan = this.totalColumnaEn(col1) + this.totalColumnaEn(col2);
+           
+           int cero = totalCero();
+           int fichasPer = ((totalColumna()-fichasGan) + cero)*2;
+           
+           int val = fichasGan - fichasPer ;
+           System.out.println("Columnas " + col1 + " "+ col2 + ": " + val);
+           return true;
+ }
 
     /**
      * Cantidad de 0 que hay en las tres columnas.
@@ -121,6 +115,125 @@ public class Columnas extends Estudio {
         }
         return cont1++;
     }
+
+/**
+*    Esta funcion devuelve la cantidad de veces qeu se acierta apostando a no repetir
+*   en columnas, mirara cuando repita n_repetir veces y en la columna columna.
+*    
+     * @param columna    Columna que seleccionamos.
+     * @param n_repetir  Cuando se apuesta a repetir.
+     * @return cont1 que sera el numero de veces que se acierta.
+*/       
+public int aNoRepetir(int columna, int n_repetir){
+        int cont1 = 0;
+        int contR = 0;
+        
+        int datoA;
+        int datoB;
+        
+        int tam = Columnas.BasesDatos.size()-1;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                        contR++;
+                        
+                        if(contR == n_repetir){
+                            
+                            datoA = datos[BasesDatos.get(i)].getColumna();
+                            datoB = datos[BasesDatos.get(i+1)].getColumna();
+                            
+                            if(datoA !=datoB){
+                               
+                                 cont1++;
+                            }
+                        }
+                }else{
+                        contR = 0;
+                
+                }
+                   
+        }
+        return cont1++;
+}
+/**
+*    Esta funcion devuelve la cantidad de veces qeu se acierta apostando a repetir
+*   en columnas, mirara cuando repita n_repetir veces y en la columna columna.
+*    
+     * @param columna    Columna que seleccionamos.
+     * @param n_repetir  Cuando se apuesta a repetir.
+     * @return cont1 que sera el numero de veces que se acierta.
+*/     
+
+public int aRepetir(int columna, int n_repetir){
+        int cont1 = 0;
+        int contR = 0;
+        
+        int datoA;
+        int datoB;
+        
+        int tam = Columnas.BasesDatos.size()-1;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                        contR++;
+                        
+                        if(contR == n_repetir){
+                            
+                            datoA = datos[BasesDatos.get(i)].getColumna();
+                            datoB = datos[BasesDatos.get(i+1)].getColumna();
+                            
+                            if(datoA ==datoB){
+                               
+                                 cont1++;
+                            }
+                        }
+                }else{
+                        contR = 0;
+                
+                }
+                   
+        }
+        return cont1++;
+}
+
+/**
+*    Esta funcion devuelve la cantidad de veces que se puede apostar a repetir
+*   n_repetir en todo nuesto vecotr.
+*    
+     * @param columna    Columna que seleccionamos.
+     * @param n_repetir  Cuando se apuesta a repetir.
+     * @return cont1 que sera el numeor de veces que se puesta.
+*/       
+public int vecesRepetir(int columna, int n_repetir){
+        int cont1 = 0;
+        int contR = 0;
+        
+        int datoA;
+        int datoB;
+        
+        int tam = Columnas.BasesDatos.size()-1;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                        contR++;
+                        
+                        if(contR == n_repetir){                     
+                                 cont1++;
+                            
+                        }
+                }else{
+                        contR = 0;
+                
+                }
+                   
+        }
+        return cont1++;
+}
+
+
 
     /*
     public void verTotalColumnas() {

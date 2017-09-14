@@ -18,9 +18,6 @@ public class Estudio {
     
     
     
-    
-    
-
     public Estudio(Numero[] datos, ArrayList BasesDatos) {
         this.datos = datos;
         this.BasesDatos = BasesDatos;
@@ -29,7 +26,10 @@ public class Estudio {
     public void setBasesDatos(ArrayList<Integer> BasesDatos) {
         this.BasesDatos = BasesDatos;
     }
-        
+    
+    public int getTamBasesDatos(){
+            return Estudio.BasesDatos.size();
+    }
 
     @Override
     public String toString() {
@@ -40,7 +40,7 @@ public class Estudio {
         }*/
         
          for (int i = 0; i < this.BasesDatos.size(); i++) {
-            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + '}';
+            valor = "Analisis{" + "datos=" + this.BasesDatos.get(i) + ','+ datos[BasesDatos.get(i)].getColumna()+'}';
             System.out.println(valor);
 
         }
