@@ -37,7 +37,7 @@ public class Mangos {
              
                 
                 ArrayList BasesDatoss = new ArrayList<>();
-           for(int i=0;i <40;i++){
+           for(int i=0;i <1000;i++){
                    
                BasesDatoss.add((int)(Math.random()*(37-0)));
          //  System.out.println(BasesDatos.get(i));
