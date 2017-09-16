@@ -14,7 +14,7 @@ public class Numero {
     private int valor;
     private boolean par;    //0 Impar, 1 Par
     private boolean color;  //0 Negro , 1 Rojo
-    private int decena;     // 1ª 1-12 , 2º13-24, 25-36 
+    private int docena;     // 1ª 1-12 , 2º13-24, 25-36 
     private int columna;
     private int mitad;
     private int fila;
@@ -32,7 +32,7 @@ public class Numero {
             col = !col;
             this.columna = columnas();
             colum++;
-            this.decena = decena();
+            this.docena = docena();
             this.mitad = mitad();
             this.fila = filas();
         }
@@ -64,7 +64,7 @@ public class Numero {
             return col;
     }
 
-    private int decena() {
+    private int docena() {
 
         int doc;
 
@@ -114,9 +114,13 @@ public class Numero {
         return columna;
     }
 
+    public int getDocena() {
+        return docena;
+    }
+
     @Override
     public String toString() {
-        return "Numero{" + "valor=" + valor + ", par=" + par + ", color=" + color + ", decena=" + decena + ", columna=" + columna + ", mitad=" + mitad + ", fila=" + fila + '}';
+        return "Numero{" + "valor=" + valor + ", par=" + par + ", color=" + color + ", docena=" + docena + ", columna=" + columna + ", mitad=" + mitad + ", fila=" + fila + '}';
     }
 
     

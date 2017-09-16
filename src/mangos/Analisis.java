@@ -26,7 +26,7 @@ public class Analisis {
    // private ArrayList<Integer> BasesDatos;
     private Columnas Columna;
     private Color Color ;
-   
+   private Docenas Docena;
    // private  Estudio Columna = new Columnas(datos, BasesDatos);
    // private Estudio Color = new Color(datos, BasesDatos);
     
@@ -51,7 +51,7 @@ public class Analisis {
         
          this.Columna = new Columnas(datos, BasesDatos);
          this.Color = new Color(datos, BasesDatos);
-          
+           this.Docena= new Docenas(datos, BasesDatos);
          
       
      
@@ -157,7 +157,7 @@ private String datosDosColumnas(){
 
 public String noRepetir(int columna){
    
-    System.out.println( "Apuesta: No se repite en la columan 1 en repetición x");
+    System.out.println( "Apuesta: No se repite en la columan "+ columna+" en repetición x");
     int tam = this.Columna.MayorSeguida(columna)+1;
     
     int cont_ganadas=0;
@@ -201,15 +201,72 @@ System.out.println( "Totales: "    + "\t" +cont_ganadas + "\t" + (cont_apuestas-
 return "";
 }
 
+public String noRepetirDocena(int docena){
+   
+    System.out.println( "Apuesta: No se repite en la Docena "+ docena+" en repetición x");
+    int tam = this.Docena.MayorSeguida(docena)+1;
+    
+    int cont_ganadas=0;
+    int cont_apuestas=0;
+    int ganas=0;
+    int pierdes=0;
+    int total =0;
+    float por;
+    System.out.println( "Repet x  | Ganadas --> %  | Perdidas --> % | TotalApu | %GanadasT | %PerdidasT");
+   
+    
+    for (int i=1;i<=tam&&tam!=1;i++){
+        ganas = this.Docena.aNoRepetir(docena, i);
+        total =this.Docena.vecesRepetir(docena, i);
+        cont_ganadas = cont_ganadas +ganas;
+        cont_apuestas=cont_apuestas+ total;
+    }
+    
+    for (int i=1;i<=tam&&tam!=1;i++){
+        ganas = this.Docena.aNoRepetir(docena, i);
+        total =this.Docena.vecesRepetir(docena, i);
+        pierdes=(total-ganas);
+        
+       
+        por = (float)((float)(100*ganas)/(float)total);
+        System.out.print( "\t"  + i + "   " + String.format("%02d",ganas ) + " --> " + String.format("%03.2f", por ) + "%   ");
+        
+        por = (float)((float)(100*pierdes)/(float)total);
+        System.out.print( String.format("%02d",pierdes )+ " --> "+ String.format("%03.2f", por )+ "%    "+ String.format("%02d",total )+ "    \t" );
+        
+        por = (float)((float)(100*ganas)/(float)cont_apuestas);
+        System.out.print( String.format("%03.2f", por )+ "%  " );
+        
+        por = (float)((float)(100*pierdes)/(float)cont_apuestas);
+        System.out.println( String.format("%03.2f", por )+ "%      " );
+        
+       
+        }
+System.out.println( "Totales: "    + "\t" +cont_ganadas + "\t" + (cont_apuestas-cont_ganadas)+ "\t" +cont_apuestas);
+ System.out.println("___________________________________________");
+return "";
+}
+
+
+
+
+
+
 
 public String datosApuestaNoRepetir(){
     
     noRepetir(1);
-     
+    
     noRepetir(2);
      
       noRepetir(3);
-  
+    
+    noRepetirDocena(1);
+    
+        noRepetirDocena(2);
+        
+            noRepetirDocena(3);
+      
     /*
     tam = this.Columna.MayorSeguida(2)+1;
    for (int i=1;i<=tam&&tam!=1;i++){
