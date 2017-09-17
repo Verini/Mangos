@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class Columnas extends Estudio {
 
+    
+///////////////////////////BASICA///////////////////////////////////////////////
     public Columnas(Numero[] datos, ArrayList BasesDatos) {
         super(datos, BasesDatos);
     }
@@ -33,6 +35,14 @@ public class Columnas extends Estudio {
         return totalColumnaEn(1) + totalColumnaEn(2)+totalColumnaEn(3);
     }
     
+    
+    
+
+    
+    
+
+   
+////////////////////////////////////////////////////////////////////////////////    
     
     
     
