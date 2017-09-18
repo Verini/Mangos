@@ -34,18 +34,71 @@ public class Columnas extends Estudio {
     public int totalColumna() {
         return totalColumnaEn(1) + totalColumnaEn(2)+totalColumnaEn(3);
     }
-    
-    
-    
-
-    
-    
-
    
 ////////////////////////////////////////////////////////////////////////////////    
     
+
     
     
+public int vecesRepetidas(int columna, int cantidad){
+
+        int cant=0;
+                
+        int n_repet=0;
+        
+        int anterior;
+        int actual;
+        
+        
+        
+        int tam = Columnas.BasesDatos.size()-1 ;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                        
+                        anterior= datos[BasesDatos.get(i)].getColumna();
+                        actual = datos[BasesDatos.get(i+1)].getColumna();
+                            
+                          
+                              
+                              
+                              
+                        if(anterior == actual){
+                               
+                                n_repet++;
+                        }else{
+                             if( n_repet == cantidad ){
+                                 
+                                 
+                                 if(( 6 == cantidad)&&(actual==0)){
+                                      System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
+                                 
+                                 }
+                                 
+                                 cant++;
+                             } 
+                            
+                             n_repet = 0;
+                          
+                          
+                        }
+                        
+                }
+                   
+        }
+        
+        
+        
+         if( n_repet == cantidad ){
+                                 cant++;
+                             } 
+        return cant;
+    
+ 
+
+
+} 
     
     
     public int MayorSeguida(int columna, int num) {
@@ -244,6 +297,125 @@ public int vecesRepetir(int columna, int n_repetir){
 }
 
 
+
+
+
+public int columnaUltTquiTaca(){
+        int cont=0;
+        int tam = Columnas.BasesDatos.size()-1;
+        int columna=0;
+        boolean salir = false;
+       
+        while(!salir){
+            
+                columna = datos[BasesDatos.get(tam)].getColumna();
+                
+                if (datos[BasesDatos.get(tam-1)].getColumna() != columna) {
+                       cont++;
+                }else{
+                    if(cont >= 1){                     
+                          salir = true;
+                        
+                    }
+      
+                }
+                tam--;
+                   
+        }
+       System.out.print("\nTiquiTaca Columna: " + columna + " NumeroVeces: " + cont);
+       
+       
+       
+       return columna;
+}
+
+public int vecesUltTquiTaca(){
+      int cont=0;
+        int tam = Columnas.BasesDatos.size()-1;
+        int columna=0;
+        boolean salir = false;
+       
+        while(!salir){
+            
+                columna = datos[BasesDatos.get(tam)].getColumna();
+                
+                if (datos[BasesDatos.get(tam-1)].getColumna() != columna) {
+                       cont++;
+                }else{
+                    if(cont >= 1){                     
+                          salir = true;
+                        
+                    }
+      
+                }
+                tam--;
+                   
+        }
+
+       System.out.print("\nTiquiTaca " + cont + "\n");
+       System.out.print("Estoy en la Columna : " + datos[BasesDatos.get(Columnas.BasesDatos.size()-1)].getColumna());
+       return  cont;
+
+}
+
+
+public int ultimaColumRepe(){
+    
+        int cont=0;
+        int tam = Columnas.BasesDatos.size()-1;
+        int columna=0;
+        boolean salir = false;
+       
+        while(!salir){
+            
+                columna = datos[BasesDatos.get(tam)].getColumna();
+                
+                if (datos[BasesDatos.get(tam-1)].getColumna() == columna) {
+                       cont++;
+                      
+                }else{
+                    if(cont >= 1){                     
+                          salir = true;
+                        
+                    }
+      
+                }
+                tam--;
+                   
+        }
+       System.out.print("Columna: " + columna + " NumeroVeces: " + cont);
+       return columna;
+}
+
+
+public int numVecesUltColRepe(){
+            int cont=0;
+        int tam = Columnas.BasesDatos.size();
+        int columna=0;
+        boolean salir = false;
+       
+        while(!salir){
+            
+                columna = datos[BasesDatos.get(tam)].getColumna();
+                
+                if (datos[BasesDatos.get(tam-1)].getColumna() == columna) {
+                       cont++;
+                      
+                }else{
+                    if(cont >= 1){                     
+                          salir = true;
+                        
+                    }
+      
+                }
+                tam--;
+                   
+        }
+       System.out.print("Columna: " + columna + " NumeroVeces: " + cont);
+       return cont;
+}
+    
+    
 
     /*
     public void verTotalColumnas() {

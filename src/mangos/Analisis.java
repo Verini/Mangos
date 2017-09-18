@@ -68,8 +68,7 @@ public class Analisis {
        return ( this.Columna.toString());
     }
 
-  
-    
+
 public String verColum() {
        
      
@@ -78,20 +77,27 @@ public String verColum() {
      System.out.println( "Mayor nuvero de veces seguidas Col 1: " + this.Columna.MayorSeguida(1));
      System.out.println( "Mayor nuvero de veces seguidas Col 2: " + this.Columna.MayorSeguida(2));
      System.out.println( "Mayor nuvero de veces seguidas Col 3: " + this.Columna.MayorSeguida(3));
+   
+    
+     
+     
      
      int tam = this.Columna.MayorSeguida(1);
-     for (int i=0;i<=tam;i++){
-         System.out.println( "Col 1 . Veces repetidas iguales a "+ i + ": " + this.Columna.MayorSeguida(1,i));
+     for (int i=1;i<=tam;i++){
+          
+          System.out.println( "Col 1 . Veces repetidas iguales a "+ i + ": " + this.Columna.vecesRepetidas(1,i));
+     
+     
      }
      
      tam = this.Columna.MayorSeguida(2);
-     for (int i=0;i<=tam;i++){
-         System.out.println( "Col 2 . Veces repetidas iguales a "+ i + ": " + this.Columna.MayorSeguida(2,i));
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Col 2 . Veces repetidas iguales a "+ i + ": " + this.Columna.vecesRepetidas(2,i));
      }
      
      tam = this.Columna.MayorSeguida(3);
-     for (int i=0;i<=tam;i++){
-         System.out.println( "Col 3 . Veces repetidas iguales a "+ i + ": " + this.Columna.MayorSeguida(3,i));
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Col 3 . Veces repetidas iguales a "+ i + ": " + this.Columna.vecesRepetidas(3,i));
      }
      
 
@@ -100,6 +106,9 @@ System.out.println( "Cantidad de ceros en Columna 1: " + this.Columna.totalCero(
 
 return "gcgcg";
  } 
+
+
+
 
 public String verColumnas(){
         String Valor = "";
@@ -173,7 +182,7 @@ public String noRepetir(int columna){
     System.out.println( "Repet x  | Ganadas --> %  | Perdidas --> % | TotalApu | %GanadasT | %PerdidasT");
    
     
-    for (int i=1;i<=tam&&tam!=1;i++){
+    for (int i=0;i<=tam&&tam!=1;i++){
         ganas = this.Columna.aNoRepetir(columna, i);
         total =this.Columna.vecesRepetir(columna, i);
         cont_ganadas = cont_ganadas +ganas;
@@ -253,7 +262,18 @@ return "";
 
 
 
+public String ultimaNvecesRepe(){
 
+            this.Columna.ultimaColumRepe();
+//this.Columna.columnaUltTquiTaca();
+this.Columna.vecesUltTquiTaca();
+
+
+
+return "";
+
+
+}
 
 
 
