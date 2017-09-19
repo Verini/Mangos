@@ -100,7 +100,65 @@ public int vecesRepetidas(int columna, int cantidad){
 
 } 
     
+public int vecesRepetidasQueLleganCero(int columna, int cantidad){
+
+        int cant=0;
+                
+        int n_repet=0;
+        
+        int anterior;
+        int actual;
+        
+        
+        
+        int tam = Columnas.BasesDatos.size()-1 ;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getColumna() == columna) {
+                        
+                        anterior= datos[BasesDatos.get(i)].getColumna();
+                        actual = datos[BasesDatos.get(i+1)].getColumna();
+                            
+                          
+                              
+                              
+                              
+                        if(anterior == actual){
+                               
+                                n_repet++;
+                        }else{
+                             if( n_repet == cantidad ){
+                                 
+                                 
+                                 if((actual==0)){
+                                        cant++;
+                                 }
+                                
+                                
+                             } 
+                            
+                             n_repet = 0;
+                          
+                          
+                        }
+                        
+                }
+                   
+        }
+        
+        
+        
+         if( n_repet == cantidad ){
+                                 cant++;
+                             } 
+        return cant;
     
+ 
+
+
+} 
+
     public int MayorSeguida(int columna, int num) {
         int Mayor_seguida = 0;
         int cont1 = -1;

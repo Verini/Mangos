@@ -334,6 +334,188 @@ public String datosApuestaRepetir(){
     
     return "";
 }
+
+
+/////////////////////////////////MIRAR COMO GANAR ESTA APUESTA/////////////////
+  public void apuestaDosColumANoRepetirYCero(){
+  
+        int ganarC1 = this.Columna.vecesRepetidas(1,6);
+        int ganarC2 = this.Columna.vecesRepetidas(2,6);
+        int ganarC3 = this.Columna.vecesRepetidas(3,6);
+        
+        System.out.println("Se apuesta al cambio:");
+        ////Perdidas son las repetida mayores a 6 si las tienes.
+        int perderC1=0;
+        int perderC2=0;
+        int perderC3=0;
+        int ceroC1=this.Columna.vecesRepetidasQueLleganCero(1,6);
+        int ceroC2=this.Columna.vecesRepetidasQueLleganCero(2,6);
+        int ceroC3=this.Columna.vecesRepetidasQueLleganCero(3,6);
+        
+        
+        
+        if(6 < this.Columna.MayorSeguida(1)){
+                   
+            int tam = this.Columna.MayorSeguida(1)+ 1;
+            for (int i=7;i<=tam;i++){
+                  System.out.println("\tCol 1 : i="+i+"  " + this.Columna.vecesRepetidas(1, i));
+             if(this.Columna.vecesRepetir(1, i)!=0){
+                 perderC1 = perderC1 + this.Columna.vecesRepetidas(1, i);
+             }
+            }
+        
+        }
+   
+        
+       if(6 < this.Columna.MayorSeguida(2)){
+                   
+            int tam = this.Columna.MayorSeguida(2)+ 1;
+            for (int i=7;i<=tam;i++){
+                  System.out.println("\tCol 2 :" + this.Columna.vecesRepetidas(2, i));
+             if(this.Columna.vecesRepetidas(2, i)!=0){
+                 perderC2 = perderC2 + this.Columna.vecesRepetidas(2, i);
+             }
+            }
+        
+        }
+        if(6 < this.Columna.MayorSeguida(3)){
+                   
+            int tam = this.Columna.MayorSeguida(3)+ 1;
+            for (int i=7;i<=tam;i++){
+                  System.out.println("\tCol3 :" + this.Columna.vecesRepetidas(3, i));
+                if(this.Columna.vecesRepetir(3, i)!=0){
+                 perderC3 = perderC3 + this.Columna.vecesRepetidas(3, i);
+                }
+            }
+        
+        }
+      
+        
+        
+        
+        System.out.println("Col 1 . Veces repetidas iguales a 6: " + ganarC1 );
+        System.out.println("Col 2 . Veces repetidas iguales a 6: " + ganarC2 );
+        System.out.println("Col 3 . Veces repetidas iguales a 6: " + ganarC3 );
+        System.out.println("Total Ganadas: " + (ganarC1 + ganarC2+ ganarC3) );
+        
+        
+        System.out.println("Col 1 . Veces repetidas iguales a 6: " + perderC1 );
+        System.out.println("Col 2 . Veces repetidas iguales a 6: " + perderC2 );
+        System.out.println("Col 3 . Veces repetidas iguales a 6: " + perderC3 );
+        System.out.println("Total Perdidas: " + (perderC1 + perderC2+ perderC3) );
+        
+        
+        
+         
+         
+         
+         
+         
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC1);
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC2);
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC3);
+        System.out.println("Total Caidas en Cero: " + (ceroC1 + ceroC2+ ceroC3) );
+        
+        
+        System.out.println("Fichas Perdidas: " + (perderC1 + perderC2+ perderC3)*5 );
+        System.out.println("Fichas Ganadas en columnas: " + (ganarC1 + ganarC2+ ganarC3) );
+        System.out.println("Fichas Caidas en Cero: " + (ceroC1 + ceroC2+ ceroC3)*(32) );
+       int fichasG = (ganarC1 + ganarC2+ ganarC3)+((ceroC1 + ceroC2+ ceroC3)*(32));
+       int fichasP = (perderC1 + perderC2+ perderC3)*5;
+  
+       System.out.println("Resultado: " + (fichasG - fichasP) );
+        
+  }
+  public void apuestaDosColumANoRepetirYCero(int dato){
+  
+        int ganarC1 = this.Columna.vecesRepetidas(1,dato);
+        int ganarC2 = this.Columna.vecesRepetidas(2,dato);
+        int ganarC3 = this.Columna.vecesRepetidas(3,dato);
+        
+        System.out.println("Se apuesta al cambio:");
+        ////Perdidas son las repetida mayores a 6 si las tienes.
+        int perderC1=0;
+        int perderC2=0;
+        int perderC3=0;
+        int ceroC1=this.Columna.vecesRepetidasQueLleganCero(1,dato);
+        int ceroC2=this.Columna.vecesRepetidasQueLleganCero(2,dato);
+        int ceroC3=this.Columna.vecesRepetidasQueLleganCero(3,dato);
+        
+        
+        
+        if(6 < this.Columna.MayorSeguida(1)){
+                   
+            int tam = this.Columna.MayorSeguida(1)+ 1;
+            for (int i=dato+1;i<=tam;i++){
+                  System.out.println("\tCol 1 : i="+i+"  " + this.Columna.vecesRepetidas(1, i));
+             if(this.Columna.vecesRepetir(1, i)!=0){
+                 perderC1 = perderC1 + this.Columna.vecesRepetidas(1, i);
+             }
+            }
+        
+        }
+   
+        
+       if(6 < this.Columna.MayorSeguida(2)){
+                   
+            int tam = this.Columna.MayorSeguida(2)+ 1;
+            for (int i=dato+1;i<=tam;i++){
+                  System.out.println("\tCol 2 :" + this.Columna.vecesRepetidas(2, i));
+             if(this.Columna.vecesRepetidas(2, i)!=0){
+                 perderC2 = perderC2 + this.Columna.vecesRepetidas(2, i);
+             }
+            }
+        
+        }
+        if(6 < this.Columna.MayorSeguida(3)){
+                   
+            int tam = this.Columna.MayorSeguida(3)+ 1;
+            for (int i=dato+1;i<=tam;i++){
+                  System.out.println("\tCol3 :" + this.Columna.vecesRepetidas(3, i));
+                if(this.Columna.vecesRepetir(3, i)!=0){
+                 perderC3 = perderC3 + this.Columna.vecesRepetidas(3, i);
+                }
+            }
+        
+        }
+      
+        
+        
+        
+        System.out.println("Col 1 . Veces repetidas iguales a 6: " + ganarC1 );
+        System.out.println("Col 2 . Veces repetidas iguales a 6: " + ganarC2 );
+        System.out.println("Col 3 . Veces repetidas iguales a 6: " + ganarC3 );
+        System.out.println("Total Ganadas: " + (ganarC1 + ganarC2+ ganarC3) );
+        
+        
+        System.out.println("Col 1 . Veces repetidas iguales a 6: " + perderC1 );
+        System.out.println("Col 2 . Veces repetidas iguales a 6: " + perderC2 );
+        System.out.println("Col 3 . Veces repetidas iguales a 6: " + perderC3 );
+        System.out.println("Total Perdidas: " + (perderC1 + perderC2+ perderC3) );
+        
+        
+        
+         
+         
+         
+         
+         
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC1);
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC2);
+        System.out.println("Veces 0 cuadno caen 0:" +ceroC3);
+        System.out.println("Total Caidas en Cero: " + (ceroC1 + ceroC2+ ceroC3) );
+        
+        int fichasG = (ganarC1 + ganarC2+ ganarC3)+((ceroC1 + ceroC2+ ceroC3)*(36-4));
+        int fichasP = (perderC1 + perderC2+ perderC3)*5;
+  
+        System.out.println("Fichas Perdidas: " +  fichasP );
+        System.out.println("Fichas Ganadas en columnas: " + (ganarC1 + ganarC2+ ganarC3) );
+        System.out.println("Fichas Caidas en Cero: " + (ceroC1 + ceroC2+ ceroC3)*(36-4) );
+       
+       System.out.println("Resultado: " + ((fichasG+32) - fichasP) );
+        
+  }
+  
   
 
     private Object getContentPane() {
