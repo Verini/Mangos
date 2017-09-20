@@ -134,6 +134,77 @@ public class Estudio {
     System.out.println( "Balance es igual a: "+ ((cc*21)-(ci+ic+ii+cero)*16));
     
 }
+    
+     public void CombinacionDocenasColumnasLineas(){
+    int ccc=0;
+    int cic=0;
+    int icc=0;
+    int iic=0;
+    int cci=0;
+    int cii=0;
+    int ici=0;
+    int iii=0;
+    
+    int cero=0;
+    
+    for (int i = 0; i < BasesDatos.size()-1; i++){
+        int columnaActual=datos[BasesDatos.get(i)].getColumna();
+        int columnaSiguiente=datos[BasesDatos.get(i+1)].getColumna();
+        int docenaActual=datos[BasesDatos.get(i)].getDocena();
+        int docenaSiguiente=datos[BasesDatos.get(i+1)].getDocena();
+        int lineaActual=datos[BasesDatos.get(i)].getLinea();
+        int lineaSiguiente=datos[BasesDatos.get(i+1)].getLinea();
+        
+        if (BasesDatos.get(i+1)!=0){
+            if ((columnaActual != columnaSiguiente) && (docenaActual != docenaSiguiente) && (lineaActual != lineaSiguiente) ) {
+                ccc++;
+                
+                
+            }
+            
+            else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente && lineaActual != lineaSiguiente) {
+                cic++;
+        }
+            else if (columnaActual == columnaSiguiente && docenaActual != docenaSiguiente && lineaActual != lineaSiguiente) {
+                icc++;
+        }
+            else if (columnaActual == columnaSiguiente && docenaActual == docenaSiguiente && lineaActual != lineaSiguiente) {
+                iic++;
+        }
+            else if (columnaActual != columnaSiguiente && docenaActual != docenaSiguiente && lineaActual == lineaSiguiente) {
+                cci++;
+        }
+            else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente && lineaActual == lineaSiguiente) {
+                cii++;
+        }
+            else if (columnaActual == columnaSiguiente && docenaActual != docenaSiguiente && lineaActual == lineaSiguiente) {
+                ici++;
+        }
+            else{
+                iii++;
+                
+            }
+        }else{
+            cero++;
+        }
+        
+    }
+    
+    System.out.println( "Numero de veces que hace un cambio - cambio - cambio: "+ ccc);
+    System.out.println( "Numero de veces que hace un cambio - repite - cambio: "+ cic);
+    System.out.println( "Numero de veces que hace un repite - cambio - cambio: "+ icc);
+    System.out.println( "Numero de veces que hace un repite - repite - cambio: "+ iic);
+    System.out.println( "Numero de veces que hace un cambio - cambio - repite: "+ cci);
+    System.out.println( "Numero de veces que hace un cambio - repite - repite: "+ cii);
+    System.out.println( "Numero de veces que hace un repite - cambio - repite: "+ ici);
+    System.out.println( "Numero de veces que hace un repite - repite - repite: "+ iii);
+    
+   
+    System.out.println( "Jugando a ccc ganamos cc menos los ceros * 23: "+ (ccc*23));
+    System.out.println( "Jugando a ccc perdemos: "+ ((cic+icc+iic+cci+cii+ici+iii+cero)*14));
+    System.out.println( "Balance es igual a: "+ ((ccc*23)-(cic+icc+iic+cci+cii+ici+iii+cero)*14));
+ 
+}
 
 ////////////////////////////////////////////////////////////////////////////////
     

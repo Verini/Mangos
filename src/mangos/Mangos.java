@@ -73,7 +73,7 @@ public class Mangos {
      Juego.verDocen();
      Juego.verLine();
      Juego.CombinacionDocenasColumnas();
-
+     Juego.CombinacionDocenasColumnasLineas();
    //Juego.verColumnas();
 /*
         System.out.println("___________________________________________");

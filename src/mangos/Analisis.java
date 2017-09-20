@@ -351,6 +351,12 @@ public void CombinacionDocenasColumnas(){
     
 }
 
+public void CombinacionDocenasColumnasLineas(){
+    
+    this.Columna.CombinacionDocenasColumnasLineas();
+    
+}
+
 /**
  * Todas las apuestas y datos que sacamso de dos columnas.
  * @return 
