@@ -27,6 +27,7 @@ public class Analisis {
     private Columnas Columna;
     private Color Color ;
    private Docenas Docena;
+   private Lineas Linea;
    // private  Estudio Columna = new Columnas(datos, BasesDatos);
    // private Estudio Color = new Color(datos, BasesDatos);
     
@@ -51,7 +52,8 @@ public class Analisis {
         
          this.Columna = new Columnas(datos, BasesDatos);
          this.Color = new Color(datos, BasesDatos);
-           this.Docena= new Docenas(datos, BasesDatos);
+         this.Docena= new Docenas(datos, BasesDatos);
+         this.Linea = new Lineas(datos, BasesDatos);  
          
       
      
@@ -144,6 +146,97 @@ System.out.println( "Cantidad de ceros en Docena 1: " + this.Docena.totalCero())
 
 return "gcgcg";
  } 
+public String verLine() {
+       
+     
+     this.verLineas();
+     
+     System.out.println( "Mayor nuvero de veces seguidas Linea 1: " + this.Linea.MayorSeguida(1));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 2: " + this.Linea.MayorSeguida(2));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 3: " + this.Linea.MayorSeguida(3));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 4: " + this.Linea.MayorSeguida(4));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 5: " + this.Linea.MayorSeguida(5));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 6: " + this.Linea.MayorSeguida(6));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 7: " + this.Linea.MayorSeguida(7));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 8: " + this.Linea.MayorSeguida(8));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 9: " + this.Linea.MayorSeguida(9));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 10: " + this.Linea.MayorSeguida(10));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 11: " + this.Linea.MayorSeguida(11));
+     System.out.println( "Mayor nuvero de veces seguidas Linea 12: " + this.Linea.MayorSeguida(12));
+     
+   
+    
+     
+     
+     
+     int tam = this.Linea.MayorSeguida(1);
+     for (int i=1;i<=tam;i++){
+          
+          System.out.println( "Line 1 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(1,i));
+     
+     }
+     
+     tam = this.Linea.MayorSeguida(2);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 2 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(2,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(3);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 3 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(3,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(4);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 4 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(4,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(5);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 5 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(5,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(6);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 6 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(6,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(7);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 7 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(7,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(8);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 8 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(8,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(9);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 9 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(9,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(10);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 10 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(10,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(11);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 11 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(11,i));
+     }
+     
+     tam = this.Linea.MayorSeguida(12);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Line 12 . Veces repetidas iguales a "+ i + ": " + this.Linea.vecesRepetidas(12,i));
+     }
+
+
+System.out.println( "Cantidad de ceros en Linea 1: " + this.Linea.totalCero());
+
+
+return "gcgcg";
+ } 
 
 
 
@@ -188,6 +281,66 @@ public String verDocenas(){
         tCol = this.Docena.totalDocenasEn(3);
         por= (float)((float)tCol/(float)tTotal)* 100;
         Valor = Valor +  "\tDocena 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
+        System.out.println( Valor);
+        return Valor;
+    }
+
+public String verLineas(){
+        String Valor = "";
+        int tTotal = this.Linea.totalLineas();
+        int tCol = this.Linea.totalLineasEn(1);
+        Valor = "\nTotal de numeros: " + this.Linea.getTamBasesDatos();
+        Valor =  Valor + "\nTotal que son 0: " + this.Linea.totalCero()+ "\n";
+        Valor = Valor + "Tatal que son Lineas: " + tTotal + "\n";
+     
+        float por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 1: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(2);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 2: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+    
+        tCol = this.Linea.totalLineasEn(3);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(4);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 4: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(5);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 5: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(6);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 6: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(7);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 7: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(8);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 8: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(9);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 9: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(10);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 10: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(11);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 11: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Linea.totalLineasEn(12);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tLinea 12: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+      
+        
         System.out.println( Valor);
         return Valor;
     }

@@ -93,13 +93,14 @@ public class Estudio {
     int ci=0;
     int ic=0;
     int ii=0;
+    int cero=0;
     
     for (int i = 0; i < BasesDatos.size()-1; i++){
         int columnaActual=datos[BasesDatos.get(i)].getColumna();
         int columnaSiguiente=datos[BasesDatos.get(i+1)].getColumna();
         int docenaActual=datos[BasesDatos.get(i)].getDocena();
         int docenaSiguiente=datos[BasesDatos.get(i+1)].getDocena();
-
+        if (BasesDatos.get(i+1)!=0){
             if (columnaActual != columnaSiguiente && docenaActual != docenaSiguiente) {
                 cc++;
                 
@@ -116,6 +117,9 @@ public class Estudio {
                 ii++;
                 
             }
+        }else{
+            cero++;
+        }
         
     }
     
@@ -125,7 +129,9 @@ public class Estudio {
     System.out.println( "Numero de veces que hace un repite - repite: "+ ii);
     
     
-    
+    System.out.println( "Jugando a cc ganamos cc menos los ceros * 21: "+ (cc*21));
+    System.out.println( "Jugando a cc perdemos: "+ ((ci+ic+ii+cero)*16));
+    System.out.println( "Balance es igual a: "+ ((cc*21)-(ci+ic+ii+cero)*16));
     
 }
 

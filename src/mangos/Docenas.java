@@ -166,7 +166,7 @@ public class Docenas extends Estudio {
     public int totalCero() {
         int cont1 = 0;
 
-        for (int i = 0; i < Columnas.BasesDatos.size(); i++) { 
+        for (int i = 0; i < Docenas.BasesDatos.size(); i++) { 
                     if(datos[BasesDatos.get(i)].getValor() == 0) {
                        
                          cont1++;

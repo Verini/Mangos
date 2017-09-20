@@ -22,7 +22,7 @@ public class Mangos {
         int x = rand.nextInt(100);
 
         ArrayList BasesDatos = new ArrayList<>();
-        int[]  datos={19,25,10,5,1,32,21,2,14,20,20,12,12,35,26,10,
+        int[]  datos;/*{19,25,10,5,1,32,21,2,14,20,20,12,12,35,26,10,
             28,34,21,24,13,5,18,6,33,26,9,34,9,1,3,5,20,19,1,0,32,32,33,30,6,18,8,5,23,18,7,25,36
         ,14,16,6,18,9,6,12,15,32,1,9,30,23,1,2,17,9,14,22,12,10,30,22,2,
         4,6,6,35,5,32,6,4,36,10,5,34,13,16,1,8,19,35,25,29,27,0,27,16,24,32,29,25,
@@ -31,9 +31,9 @@ public class Mangos {
         ,25,32,6,32,7,18,20,0,31,2,27,34,20,12,14,10,27,10,27,6,20,12,22,
         30,10,1,36,32,0,22,4,24,26,28,33,30,15,21,29,27,31};
     
+      */
       
-      /* 
-        for (int i = 0; i <10000; i++) {
+        for (int i = 0; i <100; i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
            // System.out.println(BasesDatos.get(i));
@@ -42,7 +42,7 @@ public class Mangos {
 
         }
         
-    */    
+        
         
         
         
@@ -50,14 +50,14 @@ public class Mangos {
         
         
   
- 
+ /*
           for (int i = 0; i < datos.length; i++) {
 
              BasesDatos.add( datos[i]);
         
 
         }
-     
+   */  
 
         
         
@@ -71,6 +71,7 @@ public class Mangos {
         
      Juego.verColum();
      Juego.verDocen();
+     Juego.verLine();
      Juego.CombinacionDocenasColumnas();
 
    //Juego.verColumnas();

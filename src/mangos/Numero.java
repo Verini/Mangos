@@ -118,6 +118,11 @@ public class Numero {
         return docena;
     }
 
+    public int getLinea() {
+        return fila;
+    }
+    
+    
     @Override
     public String toString() {
         return "Numero{" + "valor=" + valor + ", par=" + par + ", color=" + color + ", docena=" + docena + ", columna=" + columna + ", mitad=" + mitad + ", fila=" + fila + '}';
