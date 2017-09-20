@@ -87,6 +87,47 @@ public class Estudio {
         }
         return cont;
     }
+    
+    public void CombinacionDocenasColumnas(){
+    int cc=0;
+    int ci=0;
+    int ic=0;
+    int ii=0;
+    
+    for (int i = 0; i < BasesDatos.size()-1; i++){
+        int columnaActual=datos[BasesDatos.get(i)].getColumna();
+        int columnaSiguiente=datos[BasesDatos.get(i+1)].getColumna();
+        int docenaActual=datos[BasesDatos.get(i)].getDocena();
+        int docenaSiguiente=datos[BasesDatos.get(i+1)].getDocena();
+
+            if (columnaActual != columnaSiguiente && docenaActual != docenaSiguiente) {
+                cc++;
+                
+                
+            }
+            
+            else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente) {
+                ci++;
+        }
+            else if (columnaActual == columnaSiguiente && docenaActual != docenaSiguiente) {
+                ic++;
+        }
+            else{
+                ii++;
+                
+            }
+        
+    }
+    
+    System.out.println( "Numero de veces que hace un cambio - cambio: "+ cc);
+    System.out.println( "Numero de veces que hace un cambio - repite: "+ ci);
+    System.out.println( "Numero de veces que hace un repite - cambio: "+ ic);
+    System.out.println( "Numero de veces que hace un repite - repite: "+ ii);
+    
+    
+    
+    
+}
 
 ////////////////////////////////////////////////////////////////////////////////
     

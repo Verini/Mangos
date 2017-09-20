@@ -19,7 +19,7 @@ public class Docenas extends Estudio {
     
      public int totalDocenasEn(int docena) {
         int totalDocenas = 0;
-        for (int i = 0; i < Columnas.BasesDatos.size(); i++) {
+        for (int i = 0; i < Docenas.BasesDatos.size(); i++) {
 
             if (datos[BasesDatos.get(i)].getDocena() == docena) {
                 totalDocenas++;
@@ -31,6 +31,66 @@ public class Docenas extends Estudio {
     public int totalDocenas() {
         return totalDocenasEn(1) + totalDocenasEn(2)+totalDocenasEn(3);
     }
+    
+    public int vecesRepetidas(int docena, int cantidad){
+
+        int cant=0;
+                
+        int n_repet=0;
+        
+        int anterior;
+        int actual;
+        
+        
+        
+        int tam = Docenas.BasesDatos.size()-1 ;
+        
+        for (int i = 0; i < tam ; i++) { 
+                
+                if (datos[BasesDatos.get(i)].getDocena() == docena) {
+                        
+                        anterior= datos[BasesDatos.get(i)].getDocena();
+                        actual = datos[BasesDatos.get(i+1)].getDocena();
+                            
+                          
+                              
+                              
+                              
+                        if(anterior == actual){
+                               
+                                n_repet++;
+                        }else{
+                             if( n_repet == cantidad ){
+                                 
+                                 
+                                 if(actual==0){
+                                   //   System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
+                                 
+                                 }
+                                 
+                                 cant++;
+                             } 
+                            
+                             n_repet = 0;
+                          
+                          
+                        }
+                        
+                }
+                   
+        }
+        
+        
+        
+         if( n_repet == cantidad ){
+                                 cant++;
+                             } 
+        return cant;
+    
+ 
+
+
+} 
     
     
     

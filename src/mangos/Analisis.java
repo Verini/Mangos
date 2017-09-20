@@ -107,6 +107,44 @@ System.out.println( "Cantidad de ceros en Columna 1: " + this.Columna.totalCero(
 return "gcgcg";
  } 
 
+public String verDocen() {
+       
+     
+     this.verDocenas();
+     
+     System.out.println( "Mayor nuvero de veces seguidas Docena 1: " + this.Docena.MayorSeguida(1));
+     System.out.println( "Mayor nuvero de veces seguidas Docena 2: " + this.Docena.MayorSeguida(2));
+     System.out.println( "Mayor nuvero de veces seguidas Docena 3: " + this.Docena.MayorSeguida(3));
+   
+    
+     
+     
+     
+     int tam = this.Docena.MayorSeguida(1);
+     for (int i=1;i<=tam;i++){
+          
+          System.out.println( "Doce 1 . Veces repetidas iguales a "+ i + ": " + this.Docena.vecesRepetidas(1,i));
+     
+     
+     }
+     
+     tam = this.Docena.MayorSeguida(2);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Doce 2 . Veces repetidas iguales a "+ i + ": " + this.Docena.vecesRepetidas(2,i));
+     }
+     
+     tam = this.Docena.MayorSeguida(3);
+     for (int i=1;i<=tam;i++){
+         System.out.println( "Doce 3 . Veces repetidas iguales a "+ i + ": " + this.Docena.vecesRepetidas(3,i));
+     }
+     
+
+System.out.println( "Cantidad de ceros en Docena 1: " + this.Docena.totalCero());
+
+
+return "gcgcg";
+ } 
+
 
 
 
@@ -132,6 +170,33 @@ public String verColumnas(){
         return Valor;
     }
 
+public String verDocenas(){
+        String Valor = "";
+        int tTotal = this.Docena.totalDocenas();
+        int tCol = this.Docena.totalDocenasEn(1);
+        Valor = "\nTotal de numeros: " + this.Docena.getTamBasesDatos();
+        Valor =  Valor + "\nTotal que son 0: " + this.Docena.totalCero()+ "\n";
+        Valor = Valor + "Tatal que son docenas: " + tTotal + "\n";
+     
+        float por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tDocena 1: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+        
+        tCol = this.Docena.totalDocenasEn(2);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tDocena 2: " + tCol +"   "+ String.format("%.2f", por) + "%\n";
+    
+        tCol = this.Docena.totalDocenasEn(3);
+        por= (float)((float)tCol/(float)tTotal)* 100;
+        Valor = Valor +  "\tDocena 3: " + tCol + "   "+ String.format("%.2f", por) + "%\n";
+        System.out.println( Valor);
+        return Valor;
+    }
+
+public void CombinacionDocenasColumnas(){
+    
+    this.Columna.CombinacionDocenasColumnas();
+    
+}
 
 /**
  * Todas las apuestas y datos que sacamso de dos columnas.
@@ -447,7 +512,7 @@ public String datosApuestaRepetir(){
                    
             int tam = this.Columna.MayorSeguida(1)+ 1;
             for (int i=dato+1;i<=tam;i++){
-                  System.out.println("\tCol 1 : i="+i+"  " + this.Columna.vecesRepetidas(1, i));
+                  //System.out.println("\tCol 1 : i="+i+"  " + this.Columna.vecesRepetidas(1, i));
              if(this.Columna.vecesRepetir(1, i)!=0){
                  perderC1 = perderC1 + this.Columna.vecesRepetidas(1, i);
              }
@@ -460,7 +525,7 @@ public String datosApuestaRepetir(){
                    
             int tam = this.Columna.MayorSeguida(2)+ 1;
             for (int i=dato+1;i<=tam;i++){
-                  System.out.println("\tCol 2 :" + this.Columna.vecesRepetidas(2, i));
+                //  System.out.println("\tCol 2 :" + this.Columna.vecesRepetidas(2, i));
              if(this.Columna.vecesRepetidas(2, i)!=0){
                  perderC2 = perderC2 + this.Columna.vecesRepetidas(2, i);
              }
@@ -471,7 +536,7 @@ public String datosApuestaRepetir(){
                    
             int tam = this.Columna.MayorSeguida(3)+ 1;
             for (int i=dato+1;i<=tam;i++){
-                  System.out.println("\tCol3 :" + this.Columna.vecesRepetidas(3, i));
+                  //System.out.println("\tCol3 :" + this.Columna.vecesRepetidas(3, i));
                 if(this.Columna.vecesRepetir(3, i)!=0){
                  perderC3 = perderC3 + this.Columna.vecesRepetidas(3, i);
                 }

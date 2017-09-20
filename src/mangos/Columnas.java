@@ -71,8 +71,8 @@ public int vecesRepetidas(int columna, int cantidad){
                              if( n_repet == cantidad ){
                                  
                                  
-                                 if(( 6 == cantidad)&&(actual==0)){
-                                      System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
+                                 if(actual==0){
+                                   //   System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
                                  
                                  }
                                  
@@ -149,9 +149,7 @@ public int vecesRepetidasQueLleganCero(int columna, int cantidad){
         
         
         
-         if( n_repet == cantidad ){
-                                 cant++;
-                             } 
+        
         return cant;
     
  
