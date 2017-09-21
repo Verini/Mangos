@@ -32,11 +32,7 @@ public class Estudio {
         return Estudio.BasesDatos.size();
     }
 
-    
-    
-    
-    
-    @Override
+   @Override
     public String toString() {
         String valor = "";
         /* for (int i = 0; i < this.datos.length; i++) {
@@ -57,7 +53,22 @@ public class Estudio {
 
 
 ////////////////////////////////////////////////////////////////////////////////
+ /**
+     * Cantidad de 0 que hay en las tres columnas.
+     *
+     * @return La suma de la cantidad de 0 de las 3 columnas.
+     */
+    public int totalCero() {
+        int cont1 = 0;
 
+        for (int i = 0; i < Columnas.BasesDatos.size(); i++) { 
+                    if(datos[BasesDatos.get(i)].getValor() == 0) {
+                       
+                         cont1++;
+                    }
+        }
+        return cont1++;
+    }
 
 ///////////////////////////NUMERO CALIENTE//////////////////////////////////////
     public String nCalientes() {
