@@ -101,16 +101,16 @@ public class Estudio {
         int docenaActual=datos[BasesDatos.get(i)].getDocena();
         int docenaSiguiente=datos[BasesDatos.get(i+1)].getDocena();
         if (BasesDatos.get(i+1)!=0){
-            if (columnaActual != columnaSiguiente && docenaActual != docenaSiguiente) {
+            if ((columnaActual != columnaSiguiente) && (docenaActual != docenaSiguiente)) {
                 cc++;
                 
                 
             }
             
-            else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente) {
+            else if ((columnaActual != columnaSiguiente) && (docenaActual == docenaSiguiente)) {
                 ci++;
         }
-            else if (columnaActual == columnaSiguiente && docenaActual != docenaSiguiente) {
+            else if ((columnaActual == columnaSiguiente) && (docenaActual != docenaSiguiente)) {
                 ic++;
         }
             else{
@@ -157,21 +157,19 @@ public class Estudio {
         
         if (BasesDatos.get(i+1)!=0){
             if ((columnaActual != columnaSiguiente) && (docenaActual != docenaSiguiente) && (lineaActual != lineaSiguiente) ) {
-                ccc++;
-                
-                
+                ccc++;  
             }
             
-            else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente && lineaActual != lineaSiguiente) {
+            else if ((columnaActual != columnaSiguiente) && (docenaActual == docenaSiguiente) && (lineaActual != lineaSiguiente)) {
                 cic++;
         }
-            else if (columnaActual == columnaSiguiente && docenaActual != docenaSiguiente && lineaActual != lineaSiguiente) {
+            else if ((columnaActual == columnaSiguiente) && (docenaActual != docenaSiguiente) && (lineaActual != lineaSiguiente)) {
                 icc++;
         }
-            else if (columnaActual == columnaSiguiente && docenaActual == docenaSiguiente && lineaActual != lineaSiguiente) {
+            else if ((columnaActual == columnaSiguiente) && (docenaActual == docenaSiguiente) && (lineaActual != lineaSiguiente)) {
                 iic++;
         }
-            else if (columnaActual != columnaSiguiente && docenaActual != docenaSiguiente && lineaActual == lineaSiguiente) {
+            else if ((columnaActual != columnaSiguiente) && (docenaActual != docenaSiguiente) && (lineaActual == lineaSiguiente)) {
                 cci++;
         }
             else if (columnaActual != columnaSiguiente && docenaActual == docenaSiguiente && lineaActual == lineaSiguiente) {

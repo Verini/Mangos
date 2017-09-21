@@ -33,7 +33,7 @@ public class Mangos {
     
       */
       
-        for (int i = 0; i <100; i++) {
+        for (int i = 0; i <1000; i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
            // System.out.println(BasesDatos.get(i));
