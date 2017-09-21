@@ -6,6 +6,10 @@
 package mangos;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -106,6 +110,12 @@ public class Estudio {
     int ii=0;
     int cero=0;
     
+    int otro=0;
+ Set<Integer> set = new HashSet<Integer>();
+    
+//     List<Integer> set = new ArrayList<Integer>();
+
+    
     for (int i = 0; i < BasesDatos.size()-1; i++){
         int columnaActual=datos[BasesDatos.get(i)].getColumna();
         int columnaSiguiente=datos[BasesDatos.get(i+1)].getColumna();
@@ -114,22 +124,24 @@ public class Estudio {
         if (BasesDatos.get(i+1)!=0){
             if ((columnaActual != columnaSiguiente) && (docenaActual != docenaSiguiente)) {
                 cc++;
-                
+                set.add(otro);
+                   otro=0;
                 
             }
             
             else if ((columnaActual != columnaSiguiente) && (docenaActual == docenaSiguiente)) {
                 ci++;
+                otro++;
         }
             else if ((columnaActual == columnaSiguiente) && (docenaActual != docenaSiguiente)) {
-                ic++;
+                ic++;   otro++;
         }
             else{
-                ii++;
+                ii++;   otro++;
                 
             }
         }else{
-            cero++;
+            cero++;   otro++;
         }
         
     }
@@ -144,6 +156,18 @@ public class Estudio {
     System.out.println( "Jugando a cc perdemos: "+ ((ci+ic+ii+cero)*16));
     System.out.println( "Balance es igual a: "+ ((cc*21)-(ci+ic+ii+cero)*16));
     
+    
+      System.out.println( "Imprimir lista");
+    
+      Iterator<Integer> myListIterator = set.iterator();
+                while (myListIterator.hasNext()) {
+                    Integer dato = myListIterator.next();
+                  
+                   System.out.println(dato);
+                }
+    
+    
+    
 }
     
      public void CombinacionDocenasColumnasLineas(){
@@ -157,6 +181,10 @@ public class Estudio {
     int iii=0;
     
     int cero=0;
+    
+    int otro=0;
+    
+    
     
     for (int i = 0; i < BasesDatos.size()-1; i++){
         int columnaActual=datos[BasesDatos.get(i)].getColumna();

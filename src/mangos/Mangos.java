@@ -20,7 +20,7 @@ public class Mangos {
     public static void main(String[] args) {
 
         utilizarAleatorio();
-        utilzarDatos();
+       // utilzarDatos();
 
     }
 
@@ -29,7 +29,7 @@ public class Mangos {
         ArrayList BasesDatos = new ArrayList<>();
         Random rand = new Random();
         int x = rand.nextInt(100);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
             // System.out.println(BasesDatos.get(i));
@@ -39,10 +39,10 @@ public class Mangos {
         Analisis Juego = new Analisis(BasesDatos);
 
         System.out.println("___________________________________________");
-        Juego.toString();
+       // Juego.toString();
 
-        Juego.verFuncionesColumnas();
-        // Juego.verFuncionesLineas();
+        //Juego.verFuncionesColumnas();
+         Juego.verFuncionesLineas();
         //Juego.verFuncionesDocenas();
         //Juego.verFuncionesCombinadas();
     }
@@ -67,10 +67,10 @@ public class Mangos {
         System.out.println("___________________________________________");
         Juego.toString();
 
-        Juego.verFuncionesColumnas();
+        //Juego.verFuncionesColumnas();
         // Juego.verFuncionesLineas();
         //Juego.verFuncionesDocenas();
-        //Juego.verFuncionesCombinadas();
+        Juego.verFuncionesCombinadas();
 
     }
 

@@ -61,8 +61,8 @@ public class Analisis {
         this.Columna.vecesUltTquiTaca();
         this.Columna.verNoRepetir(1);
         this.Columna.verNoRepetir(2);
-        this.Columna.verNoRepetir(3);
-        this.Columna.nCalientes();
+        //this.Columna.verNoRepetir(3);
+       // this.Columna.nCalientes();
 
     }
 
@@ -78,7 +78,7 @@ public class Analisis {
 
     public void verFuncionesCombinadas() {
 
-        this.Columna.CombinacionDocenasColumnas();
+      
         this.Columna.CombinacionDocenasColumnas();
 
     }
