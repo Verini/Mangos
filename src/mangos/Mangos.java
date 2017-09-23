@@ -29,7 +29,7 @@ public class Mangos {
         ArrayList BasesDatos = new ArrayList<>();
         Random rand = new Random();
         int x = rand.nextInt(100);
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 100; i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
             // System.out.println(BasesDatos.get(i));

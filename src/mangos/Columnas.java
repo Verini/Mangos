@@ -73,8 +73,8 @@ public class Columnas extends Estudio {
            System.out.println();
      
            //Buscar el mayor tickita en columan
-           bucarmayortikitac;
-           tikitacaseguidoentredoscolumnas;
+     /*      bucarmayortikitac;
+           tikitacaseguidoentredoscolumnas;*/
           tiquiTacaDeColumna(1,1);
               
           tiquiTacaDeColumna(2,1);
@@ -241,14 +241,38 @@ public int tiquiTacaACero(int cantTiquiTaca) {
         }
      Iterator<Integer> myListIterator = list.iterator();
                 
-     
+      System.out.print("Mirar Columna TiquiTaca repe columna " + columna +":" );
+      
+      if(!list.isEmpty()){
+              int max=0;   
+           int min=100;
+          
      while (myListIterator.hasNext()) {
                     Integer dato = myListIterator.next();
                   
                    System.out.print(dato+" ");
+                    if(dato>max){
+                      max = dato;
+                  }
+                  
+                 if(dato< min){
+                      min = dato;
+                  }
+                   
                 }
                  System.out.println();
-                
+        
+           
+              System.out.print("\tMinimo : " + min);
+         System.out.println(" Max : " + max);
+      }else{
+             System.out.println(" Se repite siempre");
+      
+      }
+       
+
+    //System.out.println("Mayor numeor de verces " + columna +":" );          
+                 
         return tiquiTaca;
     }
     
