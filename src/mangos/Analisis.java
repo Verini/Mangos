@@ -54,15 +54,16 @@ public class Analisis {
 ////////////////////////////////MIRAR COMO GANAR ESTA APUESTA/////////////////
     public void verFuncionesColumnas() {
 
-        // this.Columna.verColumnas();
+        this.Columna.verColumnas();
         // this.Columna.apostarDosCol();
-        this.Columna.ultimaColumRepe();
+       // this.Columna.ultimaColumRepe();
         //this.Columna.columnaUltTquiTaca();
-        this.Columna.vecesUltTquiTaca();
-        this.Columna.verNoRepetir(1);
-        this.Columna.verNoRepetir(2);
+        //this.Columna.vecesUltTquiTaca();
+        //this.Columna.verNoRepetir(1);
+        //this.Columna.verNoRepetir(2);
         //this.Columna.verNoRepetir(3);
-       // this.Columna.nCalientes();
+      //  this.Columna.nApostarA90tiradas();
+       //this.Columna.nCalientes();
 
     }
 

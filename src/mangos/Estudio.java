@@ -77,7 +77,9 @@ public class Estudio {
 ///////////////////////////NUMERO CALIENTE//////////////////////////////////////
     public String nCalientes() {
         float por;
-
+    int otro=0;
+     int otro1=0;
+      int otro2=0;
         int cont = 0;
         for (int i = 0; i < 37; i++) {
 
@@ -85,12 +87,132 @@ public class Estudio {
             cont = contarNumero(i) + cont;
             //if(por >=3 )
             System.out.println("Numero " + i + ": " + contarNumero(i) + "    " + String.format("%03.2f", por) + "%");
+            if(contarNumero(i) >= 3){
+                 otro++;
+             }else
+            if(contarNumero(i) >= 2){
+                 otro1++;
+             }else{
+                
+                 otro2++;
+             }
         }
 
         System.out.println("Total : " + cont);
+        
+    
+         
+        for (int i = 0; i < 37; i++) {
+        
+        if(contarNumero(i) <=1){
+        //otro++;
+        }
+        }
+        System.out.println("Numeor frio : " + otro  + " " + otro1 + " " + otro2);
+        
+        
         return "";
     }
+    
+public void ponerPuntoAlosNumero(){
+     //*SEgun lo k se vea en las veces k salen los nuemore */   
 
+
+}    
+    
+ public String nApostarA90tiradas() {
+      float por;
+    int otro=0;
+     int otro1=0;
+      int otro2=0;
+  
+      int otro4=0;
+  int otro5=0; int otro6=0;
+       int otro7=0;
+            int otro8=0;
+                 int otro9=0;
+                      int otro10=0;
+        int cont = 0;
+        int otro3=0;
+        int dato=90;
+        for (int i = 0; i < 37; i++) {
+
+            por = (float) ((float) (100 * contarNumero(i) / (float) dato));
+            cont = contarNumero(i) + cont;
+            //if(por >=3 )
+            System.out.println("Numero " + i + ": " + contarNumero(0,dato,i) + "    " + String.format("%03.2f", por) + "%");
+            if(contarNumero(0,dato,i) == 10){
+               otro10++;
+            }else if(contarNumero(0,dato,i) ==9){
+             otro9++;
+            }
+            else if(contarNumero(0,dato,i) ==8){
+             otro8++;
+            }
+            else if(contarNumero(0,dato,i) ==7){
+            
+             otro7++;
+            }else if(contarNumero(0,dato,i) ==6){
+             otro6++;
+            
+            }else if(contarNumero(0,dato,i) ==5){
+            otro5++;
+            }else if(contarNumero(0,dato,i) == 4){
+                otro4++;
+            }else if(contarNumero(0,dato,i) == 3){
+                 otro3++;
+             }else
+            if(contarNumero(0,dato,i) == 2){
+                 otro2++;
+             }else{
+                 if(contarNumero(0,dato,i)== 1){
+                     
+                 otro1++;}else{
+                        otro++;
+                 
+                 }
+             
+            }
+        }
+  System.out.println("Numeor frio : " + otro10  + " " + otro9  + " "  + otro8  + " " + " " + otro7 + " " + 
+          otro6 + " "+ otro5  + " "  + otro4 + " " + otro3+" " + otro2+" " + otro1  + " "+  + otro  + " "   );
+        System.out.println("Total : " + cont);
+        
+    
+         otro=0;
+         int suma=0;
+        for (int i = 0;i<=36; i++) {
+         
+      
+          if((contarNumero(0,dato,i)==4)&&(contarNumero(dato,this.BasesDatos.size(),i) == 1)){
+                 otro++;
+                 
+                  System.out.println("Numer444o " + i + ": " +  contarNumero(dato,this.BasesDatos.size(),i));
+          }
+        
+        }
+      
+          System.out.println("Total : " + otro);
+           System.out.println("Gaanncia : " + ((otro*(36-otro2))-(otro2*(100-dato-otro))));
+        
+        return "";
+ }
+ 
+ private int contarNumero(int desde, int hasta, int numero){
+    int cont = 0;
+        for (int i =desde; i < hasta ; i++) {
+
+            if (this.BasesDatos.get(i) == numero) {
+                cont++;
+            }
+
+        }
+        return cont;
+ 
+ 
+ 
+ }
+ 
     private int contarNumero(int numero) {
         int cont = 0;
         for (int i = 0; i < this.BasesDatos.size(); i++) {

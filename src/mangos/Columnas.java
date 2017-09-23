@@ -5,7 +5,12 @@
  */
 package mangos;
 
+import static java.lang.reflect.Array.set;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -43,35 +48,42 @@ public class Columnas extends Estudio {
         System.out.println("Mayor nuvero de veces seguidas Col 1: " + this.MayorSeguida(1));
         System.out.println("Mayor nuvero de veces seguidas Col 2: " + this.MayorSeguida(2));
         System.out.println("Mayor nuvero de veces seguidas Col 3: " + this.MayorSeguida(3) + "\n");
-
-        int tam = this.MayorSeguida(1);
-        if (tam != 0) {
-            for (int i = 1; i <= tam; i++) {
-                System.out.println("Col 1 . Veces repetidas iguales a " + i + ": " + this.vecesRepetidas(1, i));
+        
+        
+        for(int i= 1;i<=3;i++){
+        int tam = this.MayorSeguida(i);
+            if (tam != 0) {
+                for (int j = 1; j <= tam; j++) {
+                    System.out.println("Col "+ i +" . Veces repetidas iguales a " + j + ": " + this.vecesRepetidas(i, j));
+                }
+            } else {
+                System.out.println("Col "+ i+" . Cambia siempre.");
             }
-        } else {
-            System.out.println("Col 1 . Cambia siempre.");
         }
-
-        tam = this.MayorSeguida(2);
-        if (tam != 0) {
-            for (int i = 1; i <= tam; i++) {
-                System.out.println("Col 2 . Veces repetidas iguales a " + i + ": " + this.vecesRepetidas(2, i));
+        System.out.println();
+         int tam = this.MayorTiquiTaca();
+           if(tam!=0){
+                for (int i = 1; i <= tam; i++) {
+                    System.out.println("Veces que hace Tiquitaca iguales a " + i + ": " + this.tiquiTaca(i) +" Y cero: "+ tiquiTacaACero(i));
+                }
+            } else {
+                System.out.println("Se Repite siempre.");
             }
-        } else {
-            System.out.println("Col 2 . Cambia siempre.");
-        }
-
-        tam = this.MayorSeguida(3);
-        if (tam != 0) {
-            for (int i = 1; i <= tam; i++) {
-                System.out.println("Col 3 . Veces repetidas iguales a " + i + ": " + this.vecesRepetidas(3, i));
-            }
-        } else {
-            System.out.println("Col 3 . Cambia siempre.");
-        }
-
-        System.out.println(vecesNoRepetidas(3));
+     
+           System.out.println();
+     
+           //Buscar el mayor tickita en columan
+           bucarmayortikitac;
+           tikitacaseguidoentredoscolumnas;
+          tiquiTacaDeColumna(1,1);
+              
+          tiquiTacaDeColumna(2,1);
+            
+          tiquiTacaDeColumna(3,1);
+        
+        System.out.println( "El Mayor TiquiTAca es : " +this.MayorTiquiTaca());
+      
+       //   System.out.println( this.tiquiTaca(1));
 
         return "gcgcg";
     }
@@ -101,49 +113,145 @@ public class Columnas extends Estudio {
     }
 
 ////////////////////////////////////////////////////////////////////////////////   
-/////////////////////////CONTEOS///////////////////////////////////////////////   
-    public int vecesNoRepetidas(int cantidad) {
+/////////////////////////CONTEOS/////////////////////////////////////////////// 
+/**
+ *    Mira el cambio que fue a 0 en 1pro ejemplo estoy en 1 columna y cambia a 0;
+ */
+public int tiquiTacaACero(int cantTiquiTaca) {
+        int cont1 = 0;
+        int tiquiTaca = 0;
 
-        int cant = 0;
-
-        int n_repet = 0;
-
-        int anterior;
-        int actual;
-
-        int tam = Columnas.BasesDatos.size() - 1;
+        int datoA;
+        int datoB;
+        int cero=0;
+        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
 
-            anterior = datos[BasesDatos.get(i)].getColumna();
-            actual = datos[BasesDatos.get(i + 1)].getColumna();
-
-            if (anterior != actual) {
-
-                n_repet++;
-            } else {
-                if (n_repet == cantidad) {
-
-                    if (actual == 0) {
-                        //   System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
-                        //i++;//Incremento la i por k es cero en la siguiente estara i+c se pasarala i y alsigueitne.
+                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+       
+                if (datoA != datoB) {
+                    //3!=2 cont1=1,,2!"=1cont1=1
+                        cont1++;
+                        
+                       if((cantTiquiTaca == cont1)&&(datoB==0)){
+                         // System.out.println("ddddddddd"+cantTiquiTaca);
+                             cero++;
+                        }
+                        
+                        
+                }else{
+                    //3 3, 2 2 mayorTiquiTaca=1
+                   
+                    if(cantTiquiTaca== cont1){
+                        
+                       
+                        tiquiTaca++;
                     }
-
-                    cant++;
+                    cont1=0;
                 }
+               
+            } 
+        
+        //Es cuando llega al final de BasesDatos y no hay repeticiones
+      if(cantTiquiTaca == cont1){
+          /* if((datoB==0)||(datoA==0)){
+                                
+                          cero++;
+                        }*/
+                       tiquiTaca++;
+      }
+        
+        return cero;
+    }    
 
-                n_repet = 0;
 
-            }
 
-        }
 
-        if (n_repet == cantidad) {
-            cant++;
-        }
-        return cant;
 
+
+//TiquiTaca
+    public int tiquiTaca(int cantidad) {
+        int cont1 = 0;
+        int tiquiTaca = 0;
+
+        int datoA=0;
+        int datoB=0;
+
+        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+
+        for (int i = 0; i < tam; i++) {
+
+                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+       
+                if (datoA != datoB) {
+                    //3!=2 cont1=1,,2!"=1cont1=1
+                        cont1++;
+                }else{
+                    //3 3, 2 2 mayorTiquiTaca=1
+                    if(cantidad== cont1){
+                        tiquiTaca++;
+                    }
+                    cont1=0;
+                }
+               
+            } 
+        
+        //Es cuando llega al final de BasesDatos y no hay repeticiones
+      if(cantidad == cont1){
+                       tiquiTaca++;
+      }
+        
+        return tiquiTaca;
     }
+ 
+    //TiquiTaca
+    public int tiquiTacaDeColumna(int columna,int cantidad) {
+        int cont1 = 0;
+        int tiquiTaca = 0;
+
+ 
+ List<Integer> list = new ArrayList<Integer>();
+        int datoA=0;
+        int datoB=0;
+
+        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+
+        for (int i = 0; i < tam; i++) {
+           
+            if(datos[BasesDatos.get(i)].getColumna()==columna){
+                datoA = datos[BasesDatos.get(i)].getColumna();//1
+                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
+       
+                if (datoA != datoB) {
+                    //3!=2 cont1=1,,2!"=1cont1=1
+                         tiquiTaca++;
+                }else{
+                    if( tiquiTaca!=0){
+                        list.add(tiquiTaca);
+                        tiquiTaca=0;
+                    
+                    }
+                    
+                }
+               
+            } 
+        }
+     Iterator<Integer> myListIterator = list.iterator();
+                
+     
+     while (myListIterator.hasNext()) {
+                    Integer dato = myListIterator.next();
+                  
+                   System.out.print(dato+" ");
+                }
+                 System.out.println();
+                
+        return tiquiTaca;
+    }
+    
 
     public int vecesRepetidas(int columna, int cantidad) {
 
@@ -154,7 +262,7 @@ public class Columnas extends Estudio {
         int anterior;
         int actual;
 
-        int tam = Columnas.BasesDatos.size() - 1;
+        int tam = Columnas.BasesDatos.size()-1;
 
         for (int i = 0; i < tam; i++) {
 
@@ -164,15 +272,14 @@ public class Columnas extends Estudio {
                 actual = datos[BasesDatos.get(i + 1)].getColumna();
 
                 if (anterior == actual) {
-
                     n_repet++;
                 } else {
                     if (n_repet == cantidad) {
 
-                        if (actual == 0) {
+                        /*if (actual == 0) {
                             //   System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
                             i++;//Incremento la i por k es cero en la siguiente estara i+c se pasarala i y alsigueitne.
-                        }
+                        }*/
 
                         cant++;
                     }
@@ -233,8 +340,46 @@ public class Columnas extends Estudio {
         return cant;
 
     }
+    
+ //hace un tikitaca
+public int MayorTiquiTaca(){
+        int cont1 = 0;
+        int mayorTiquiTaca = 0;
 
-    public int MayorSeguida(int columna, int num) {
+        int datoA;
+        int datoB;
+
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
+
+        for (int i = 0; i < tam; i++) {
+
+                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+       
+                if (datoA != datoB) {
+                    //3!=2 cont1=1,,2!"=1cont1=1
+                        cont1++;
+                }else{
+                    //3 3, 2 2 mayorTiquiTaca=1
+                    if(mayorTiquiTaca < cont1){
+                        mayorTiquiTaca = cont1;
+                    }
+                    cont1=0;
+                }
+               
+            } 
+        
+        //Es cuando llega al final de BasesDatos y no hay repeticiones
+        if(mayorTiquiTaca < cont1){
+             mayorTiquiTaca = cont1;
+        }
+        
+        return mayorTiquiTaca;
+    }
+    
+
+        
+ public int MayorSeguida(int columna, int num) {
         int Mayor_seguida = 0;
         int cont1 = -1;
 

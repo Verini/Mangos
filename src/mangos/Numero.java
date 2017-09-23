@@ -12,6 +12,7 @@ public class Numero {
     static private int linea = 0;
 
     private int valor;
+    private int puntoSalir;
     private boolean par;    //0 Impar, 1 Par
     private boolean color;  //0 Negro , 1 Rojo
     private int docena;     // 1ª 1-12 , 2º13-24, 25-36 
@@ -21,6 +22,8 @@ public class Numero {
 
     public Numero() {
         this.valor = contador;
+        
+        puntoSalir=0;
         
         if(contador == 0) {
                  
@@ -36,6 +39,14 @@ public class Numero {
             this.mitad = mitad();
             this.fila = filas();
         }
+    }
+
+    public int getPuntoSalir() {
+        return puntoSalir;
+    }
+
+    public void setPuntoSalir(int puntoSalir) {
+        this.puntoSalir = puntoSalir;
     }
 
     private boolean paridad() {
