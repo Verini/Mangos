@@ -368,6 +368,10 @@ public class Columnas extends Estudio {
 
     }
 
+    
+    
+    
+    
     public void apuestaAColumContrariaYunaficha() {
 
     }
@@ -381,7 +385,14 @@ public class Columnas extends Estudio {
         System.out.println("De Columna 1 a 3: " + this.totalTiquiTacaDeColumAColum(1, 3));
         System.out.println("Total de 1 a otra :" + totalTiquiTacaDeColumACulaquierOtra(1));
 
-        System.out.println("De Columna 2 a 0: " + this.totalTiquiTacaDeColumAColum(2, 0));
+        
+        
+        this.verTiquiTacaDosColumnasSinRepetir();
+        
+        
+        
+        
+        /*    System.out.println("De Columna 2 a 0: " + this.totalTiquiTacaDeColumAColum(2, 0));
         System.out.println("De Columna 2 a 1: " + this.totalTiquiTacaDeColumAColum(2, 1));
         System.out.println("De Columna 2 a 3: " + this.totalTiquiTacaDeColumAColum(2, 3));
         System.out.println("Total de 2 a otra :" + totalTiquiTacaDeColumACulaquierOtra(2));
@@ -398,7 +409,7 @@ public class Columnas extends Estudio {
             seguidasTiquiTacaDeColumAColum(2,1 , i);
         }
         System.out.println();
-
+*/
         /*     seguidasTiquiTacaDeColumAColum(1,3,1);  System.out.println( );
                 
                 seguidasTiquiTacaDeColumAColum(2,3,1);  System.out.println( );
@@ -423,6 +434,75 @@ public class Columnas extends Estudio {
                 seguidasTiquiTacaDeColumAColum(3,2,2);  System.out.println( )*/
     }
 
+    
+    
+   public void verTiquiTacaDosColumnasSinRepetir(){
+       
+       int sum=0;
+       int sum1=0;
+       for(int i=1;i<=3;i++){
+            for(int j=0;j<=3;j++){
+                if(i!=j){
+                  
+                  int dato =   this.tiquiTacaDosColumnasSinRepetir(i, j);
+                 
+                  sum1 = sum1 + dato;
+                  System.out.println( "Veces que hace esto " + i + j + i + ": " + dato) ;
+                  
+                  
+                }
+            }   
+            
+             System.out.println( "Total Columna " + i + ": " + sum1) ;
+             sum = sum + sum1;
+             sum1=0;
+       
+       }
+       
+         System.out.println( "Total Todas las columnas: " + sum) ;
+       
+       
+  
+   
+   }
+    
+    
+    
+    
+    
+    /*
+    *   Función que contabiliza las veces que sale de columA va a columB y vuelve a columA sin contar la que son repetida
+    **/
+    public int tiquiTacaDosColumnasSinRepetir(int columA,int columB){
+    
+        int datoA=0;
+        int datoB=0;
+       
+        int tiquiTaca = 0;
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
+
+        for (int i = 0; i < tam; i++) {
+            datoA = datos[BasesDatos.get(i)].getColumna();//1
+            datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
+     
+            if(datoA == columA){
+                if(i < tam - 1 ){
+                    if((datoB == columB)&&( datos[BasesDatos.get(i + 2)].getColumna()==columA)){
+                       tiquiTaca++;
+                       i++;
+                    }
+                }else{
+                      i =tam;
+                
+                }
+            }
+
+        }
+       
+  
+        return tiquiTaca;
+    }
+    
     public int vecesRepetidas(int columna, int cantidad) {
 
         int cant = 0;

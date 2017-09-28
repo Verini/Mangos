@@ -20,8 +20,8 @@ public class Mangos {
     public static void main(String[] args) {
 
       
-      //  utilizarAleatorio();
-       utilzarDatos();
+     // utilizarAleatorio();
+     utilzarDatos();
 
     }
 
@@ -30,7 +30,7 @@ public class Mangos {
         ArrayList BasesDatos = new ArrayList<>();
         Random rand = new Random();
         int x = rand.nextInt(100);
-        for (int i = 0; i < 30 ;i++) {
+        for (int i = 0; i < 100 ;i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
             // System.out.println(BasesDatos.get(i));
@@ -51,7 +51,7 @@ public class Mangos {
     public static void utilzarDatos() {
 
         ArrayList BasesDatos = new ArrayList<>();
-        int[] datos = {19, 25, 10, 5, 1, 33, 21, 2, 14, 20, 20, 12, 12, 35, 26, 10};
+        int[] datos = {1, 2, 1, 2, 1};
            
             
             
