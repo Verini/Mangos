@@ -48,46 +48,43 @@ public class Columnas extends Estudio {
         System.out.println("Mayor nuvero de veces seguidas Col 1: " + this.MayorSeguida(1));
         System.out.println("Mayor nuvero de veces seguidas Col 2: " + this.MayorSeguida(2));
         System.out.println("Mayor nuvero de veces seguidas Col 3: " + this.MayorSeguida(3) + "\n");
-        
-        
-        for(int i= 1;i<=3;i++){
-        int tam = this.MayorSeguida(i);
+
+        for (int i = 1; i <= 3; i++) {
+            int tam = this.MayorSeguida(i);
             if (tam != 0) {
                 for (int j = 1; j <= tam; j++) {
-                    System.out.println("Col "+ i +" . Veces repetidas iguales a " + j + ": " + this.vecesRepetidas(i, j));
+                    System.out.println("Col " + i + " . Veces repetidas iguales a " + j + ": " + this.vecesRepetidas(i, j));
                 }
             } else {
-                System.out.println("Col "+ i+" . Cambia siempre.");
+                System.out.println("Col " + i + " . Cambia siempre.");
             }
         }
         System.out.println();
-         int tam = this.MayorTiquiTaca();
-           if(tam!=0){
-                for (int i = 1; i <= tam; i++) {
-                    System.out.println("Veces que hace Tiquitaca iguales a " + i + ": " + this.tiquiTaca(i) +" Y cero: "+ tiquiTacaACero(i));
-                }
-            } else {
-                System.out.println("Se Repite siempre.");
+        int tam = this.MayorTiquiTaca();
+        if (tam != 0) {
+            for (int i = 1; i <= tam; i++) {
+                System.out.println("Veces que hace Tiquitaca iguales a " + i + ": " + this.tiquiTaca(i) + " Y cero: " + tiquiTacaACero(i));
             }
-     
-           System.out.println();
-     
-           //Buscar el mayor tickita en columan
-     /*      bucarmayortikitac;
+        } else {
+            System.out.println("Se Repite siempre.");
+        }
+
+        System.out.println();
+
+        //Buscar el mayor tickita en columan
+        /*      bucarmayortikitac;
            tikitacaseguidoentredoscolumnas;*/
-          tiquiTacaDeColumna(1,1);
-              
-          tiquiTacaDeColumna(2,1);
-            
-          tiquiTacaDeColumna(3,1);
-        
-        System.out.println( "El Mayor TiquiTAca es : " +this.MayorTiquiTaca());
-     
-       //   System.out.println( this.tiquiTaca(1));
+        tiquiTacaDeColumna(1, 1);
+
+        tiquiTacaDeColumna(2, 1);
+
+        tiquiTacaDeColumna(3, 1);
+
+        System.out.println("El Mayor TiquiTAca es : " + this.MayorTiquiTaca());
+
+        //   System.out.println( this.tiquiTaca(1));
         verTiquiTacaColumColum();
-        
-        
-        
+
         return "gcgcg";
     }
 
@@ -117,328 +114,292 @@ public class Columnas extends Estudio {
 
 ////////////////////////////////////////////////////////////////////////////////   
 /////////////////////////CONTEOS/////////////////////////////////////////////// 
-/**
- *    Mira el cambio que fue a 0 en 1pro ejemplo estoy en 1 columna y cambia a 0;
- */
-public int tiquiTacaACero(int cantTiquiTaca) {
+    /**
+     * Mira el cambio que fue a 0 en 1pro ejemplo estoy en 1 columna y cambia a
+     * 0;
+     */
+    public int tiquiTacaACero(int cantTiquiTaca) {
         int cont1 = 0;
         int tiquiTaca = 0;
 
         int datoA;
         int datoB;
-        int cero=0;
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+        int cero = 0;
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
 
-                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
-                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
-       
-                if (datoA != datoB) {
-                    //3!=2 cont1=1,,2!"=1cont1=1
-                        cont1++;
-                        
-                       if((cantTiquiTaca == cont1)&&(datoB==0)){
-                         // System.out.println("ddddddddd"+cantTiquiTaca);
-                             cero++;
-                        }
-                        
-                        
-                }else{
-                    //3 3, 2 2 mayorTiquiTaca=1
-                   
-                    if(cantTiquiTaca== cont1){
-                        
-                       
-                        tiquiTaca++;
-                    }
-                    cont1=0;
+            datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+            datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+
+            if (datoA != datoB) {
+                //3!=2 cont1=1,,2!"=1cont1=1
+                cont1++;
+
+                if ((cantTiquiTaca == cont1) && (datoB == 0)) {
+                    // System.out.println("ddddddddd"+cantTiquiTaca);
+                    cero++;
                 }
-               
-            } 
-        
+
+            } else {
+                //3 3, 2 2 mayorTiquiTaca=1
+
+                if (cantTiquiTaca == cont1) {
+
+                    tiquiTaca++;
+                }
+                cont1 = 0;
+            }
+
+        }
+
         //Es cuando llega al final de BasesDatos y no hay repeticiones
-      if(cantTiquiTaca == cont1){
-          /* if((datoB==0)||(datoA==0)){
+        if (cantTiquiTaca == cont1) {
+            /* if((datoB==0)||(datoA==0)){
                                 
                           cero++;
                         }*/
-                       tiquiTaca++;
-      }
-        
+            tiquiTaca++;
+        }
+
         return cero;
-    }    
-
-
-
-
-
+    }
 
 //TiquiTaca
     public int tiquiTaca(int cantidad) {
         int cont1 = 0;
         int tiquiTaca = 0;
 
-        int datoA=0;
-        int datoB=0;
+        int datoA = 0;
+        int datoB = 0;
 
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
 
-                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
-                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
-       
-                if (datoA != datoB) {
-                    //3!=2 cont1=1,,2!"=1cont1=1
-                        cont1++;
-                }else{
-                    //3 3, 2 2 mayorTiquiTaca=1
-                    if(cantidad== cont1){
-                        tiquiTaca++;
-                    }
-                    cont1=0;
+            datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+            datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+
+            if (datoA != datoB) {
+                //3!=2 cont1=1,,2!"=1cont1=1
+                cont1++;
+            } else {
+                //3 3, 2 2 mayorTiquiTaca=1
+                if (cantidad == cont1) {
+                    tiquiTaca++;
                 }
-               
-            } 
-        
+                cont1 = 0;
+            }
+
+        }
+
         //Es cuando llega al final de BasesDatos y no hay repeticiones
-      if(cantidad == cont1){
-                       tiquiTaca++;
-      }
-        
+        if (cantidad == cont1) {
+            tiquiTaca++;
+        }
+
         return tiquiTaca;
     }
- 
+
     //TiquiTaca
-    public int tiquiTacaDeColumna(int columna,int cantidad) {
+    public int tiquiTacaDeColumna(int columna, int cantidad) {
         int cont1 = 0;
         int tiquiTaca = 0;
 
- 
- List<Integer> list = new ArrayList<Integer>();
-        int datoA=0;
-        int datoB=0;
+        List<Integer> list = new ArrayList<Integer>();
+        int datoA = 0;
+        int datoB = 0;
 
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
-           
-            if(datos[BasesDatos.get(i)].getColumna()==columna){
+
+            if (datos[BasesDatos.get(i)].getColumna() == columna) {
                 datoA = datos[BasesDatos.get(i)].getColumna();//1
                 datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
-       
+
                 if (datoA != datoB) {
                     //3!=2 cont1=1,,2!"=1cont1=1
-                         tiquiTaca++;
-                }else{
-                    if( tiquiTaca!=0){
-                        list.add(tiquiTaca);
-                        tiquiTaca=0;
-                    
-                    }
-                    
-                }
-               
-            } 
-        }
-     Iterator<Integer> myListIterator = list.iterator();
-                
-      System.out.print("Mirar Columna TiquiTaca columna " + columna +":" );
-      
-      if(!list.isEmpty()){
-              int max=0;   
-           int min=100;
-          
-     while (myListIterator.hasNext()) {
-                    Integer dato = myListIterator.next();
-                  
-                   System.out.print(dato+" ");
-                    if(dato>max){
-                      max = dato;
-                  }
-                  
-                 if(dato< min){
-                      min = dato;
-                  }
-                   
-                }
-                 System.out.println();
-        
-           
-              System.out.print("\tMinimo : " + min);
-         System.out.println(" Max : " + max);
-      }else{
-             System.out.println(" Se repite siempre");
-      
-      }
-       
+                    tiquiTaca++;
+                } else if (tiquiTaca != 0) {
+                    list.add(tiquiTaca);
+                    tiquiTaca = 0;
 
-    //System.out.println("Mayor numeor de verces " + columna +":" );          
-                 
+                }
+
+            }
+        }
+        Iterator<Integer> myListIterator = list.iterator();
+
+        System.out.print("Mirar Columna TiquiTaca columna " + columna + ":");
+
+        if (!list.isEmpty()) {
+            int max = 0;
+            int min = 100;
+
+            while (myListIterator.hasNext()) {
+                Integer dato = myListIterator.next();
+
+                System.out.print(dato + " ");
+                if (dato > max) {
+                    max = dato;
+                }
+
+                if (dato < min) {
+                    min = dato;
+                }
+
+            }
+            System.out.println();
+
+            System.out.print("\tMinimo : " + min);
+            System.out.println(" Max : " + max);
+        } else {
+            System.out.println(" Se repite siempre");
+
+        }
+
+        //System.out.println("Mayor numeor de verces " + columna +":" );          
         return tiquiTaca;
     }
-    
-/**
- *  Este es el conteo de las veces que pasa la columA a la columb
- *  da igual si esta o no repetida anterioridad, si son reptedidas da igual todo.
+
+    /**
+     * Este es el conteo de las veces que pasa la columA a la columb da igual si
+     * esta o no repetida anterioridad, si son reptedidas da igual todo.
+     *
      * @param columA Columna donde estoy
      * @param columB Columna a donde voy
      * @return Cuantas veces se cumple que la columA va a columB
- */
- public int totalTiquiTacaDeColumAColum(int columA,int columB) {
+     */
+    public int totalTiquiTacaDeColumAColum(int columA, int columB) {
 
         int tiquiTaca = 0;
-        int datoA=0;
-        int datoB=0;
+        int datoA = 0;
+        int datoB = 0;
 
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
             datoA = datos[BasesDatos.get(i)].getColumna();//1
             datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
-            if((datoA==columA)&&(datoB==columB)){
+            if ((datoA == columA) && (datoB == columB)) {
                 tiquiTaca++;
             }
-               
-        } 
+
+        }
         return tiquiTaca;
     }
- 
- /*
+
+    /*
  * Cantidad de veces qeu puede cambiar.
- */
-  public int totalTiquiTacaDeColumACulaquierOtra(int columA) {
+     */
+    public int totalTiquiTacaDeColumACulaquierOtra(int columA) {
 
         int tiquiTaca = 0;
-        int datoA=0;
-        int datoB=0;
+        int datoA = 0;
+        int datoB = 0;
 
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
             datoA = datos[BasesDatos.get(i)].getColumna();//1
             datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
-            if((datoA==columA)&&(datoB!=columA)){
+            if ((datoA == columA) && (datoB != columA)) {
                 tiquiTaca++;
             }
-               
-        } 
+
+        }
         return tiquiTaca;
     }
- 
- 
-  public int trazaDeRepeticiones(){
-      //qeu se vea algo como lo k sigue 0{2}2{2}02{2}  2repeticion{3clumna.}o{2 veces la 3 clumna.}
-  return 1;
-  }
-  
-  
-  
-  
- public int seguidasTiquiTacaDeColumAColum(int columA,int columB,int repe) {
-       int tiquiTaca =-1;
-       int cont=0;
-        int datoA=0;
-        int datoB=0;
-        List<Integer> list = new ArrayList<Integer>();
-        int tam = Columnas.BasesDatos.size() -1;/*Se analiza el penultimo y ultimo siempre*/
+
+    public int trazaDeRepeticiones() {
+        //qeu se vea algo como lo k sigue 0{2}2{2}02{2}  2repeticion{3clumna.}o{2 veces la 3 clumna.}
+        return 1;
+    }
+
+    public int seguidasTiquiTacaDeColumAColum(int columA, int columB, int repe) {
+        
+        int tiquiTaca = 0;
+        int seguidas=0;
+        int datoA = 0;
+        int datoB = 0;
+   List<Integer> list = new ArrayList<Integer>();
+        int tam = Columnas.BasesDatos.size() - 1;/*Se analiza el penultimo y ultimo siempre*/
 
         for (int i = 0; i < tam; i++) {
-            
             datoA = datos[BasesDatos.get(i)].getColumna();//1
-            if(datoA==columA){
-                // System.out.println("EStasw es mi i:"+i);
-                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
-                if(datoB==columB){
-                    tiquiTaca++;
-                    cont=0;/*se poneen e0*/
-                }else{
-                     
-                    if(datoB==datoA){
-                        //System.out.println("Se repite"+ cont + "i: "+i+"valor"+ BasesDatos.get(i));
-                        cont++;//se a repetido.
-                         //System.out.println();
-                    }else{
-                        /*Se a apostado a la otra columna hay un tikitaca al a otra columna.*/
-                        if(cont==repe){
-                       
-                       
+            datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 
+            if ((datoA == columA) && (datoB == columB)) {
+                tiquiTaca++;
+            }else{
+                //Esta repetidas
+                if ((datoA == columA) && (datoB == datoA)){
+                        seguidas++;
+                        if(repe==0){
+                           list.add(tiquiTaca);
+                            tiquiTaca=-1;
                         }
-                        //System.out.println("otroooo"+ cont); 
-                          if(tiquiTaca>=0){
-                             // list.add( tiquiTaca);
-                          } 
-                         if(datoB!=0) 
-                           list.add( tiquiTaca);
-                         tiquiTaca=0;
                        
-                         cont = 0;//Empieza el conteo de repeticil
-                    
-                    
-                    
-                   }
-                   
+                }else{
+                      
+                    if(seguidas==repe){
+                      
+                     //  tiquiTaca=-1;
+                       list.add(tiquiTaca);
+                        tiquiTaca=-1;
+                    }
+                
+                
+                
                 }
+            
+            
+            
             }
-        } 
-         Iterator<Integer> myListIterator = list.iterator();
-            int ganamos=0;
-            int perdemos=0;
-          while (myListIterator.hasNext()) {
-                    Integer dato = myListIterator.next();
-                  
-                   System.out.print(dato+" ");
-                   if(dato == 0 ){
-                     perdemos++;
-                   }else{
-                     ganamos++;
-                   }
-                   
-                  }
-       //0 son la sposible posibilidade k se repita y no lo hiso lso uno es k fue seguida un vez. 
-        System.out.println("Total de posibles:" + list.size());
-        System.out.println("Total de saltos de la columna " +columA+ " a otra: "+ this.totalTiquiTacaDeColumACulaquierOtra(columA));
-        System.out.println("Son a 0:" +this.totalTiquiTacaDeColumAColum(columA,0));
-        System.out.println("Salta a la columna "+columB+": " + this.totalTiquiTacaDeColumAColum(columA,columB));
-         
-       System.out.println("Jugando apostar a la otra columna");
-       perdemos =(this.totalTiquiTacaDeColumACulaquierOtra(columA)-this.totalTiquiTacaDeColumAColum(columA,columB));
-       System.out.println("Perdemos:" + perdemos);
-       ganamos = (this.totalTiquiTacaDeColumAColum(columA,columB));
-       System.out.println("Ganos:" + ganamos);
+
+        }
        
-       System.out.println("Rsultado:" + ((ganamos*2)-perdemos));
-         
-        return tiquiTaca;
-     
-      
-  }   
- 
- public void apuestaAColumContrariaYunaficha(){
- 
- 
- 
- 
- }
-  
-  
-    public void verTiquiTacaColumColum(){
         
+        Iterator<Integer> myListIterator = list.iterator();
+             
+             
+        
+        return tiquiTaca;
+
+    }
+
+    public void apuestaAColumContrariaYunaficha() {
+
+    }
+
+    public void verTiquiTacaColumColum() {
+
         System.out.println("Total de veces que va de una columna a otra :");
-        System.out.println("De Columna 1 a 0: " +  this.totalTiquiTacaDeColumAColum(1,0));  
-        System.out.println("De Columna 1 a 2: " +  this.totalTiquiTacaDeColumAColum(1,2));  
-        System.out.println("De Columna 1 a 3: " +  this.totalTiquiTacaDeColumAColum(1,3)); 
-        System.out.println("De Columna 2 a 0: " +  this.totalTiquiTacaDeColumAColum(2,0));  
-        System.out.println("De Columna 2 a 1: " +  this.totalTiquiTacaDeColumAColum(2,1)); 
-        System.out.println("De Columna 2 a 3: " +  this.totalTiquiTacaDeColumAColum(2,3));
-        System.out.println("De Columna 3 a 0: " +  this.totalTiquiTacaDeColumAColum(3,0));  
-        System.out.println("De Columna 3 a 1: " +  this.totalTiquiTacaDeColumAColum(3,1)); 
-        System.out.println("De Columna 3 a 2: " +  this.totalTiquiTacaDeColumAColum(3,2));            
-           
-        System.out.println( );
-              seguidasTiquiTacaDeColumAColum(1,2,1);  System.out.println( );
-                seguidasTiquiTacaDeColumAColum(1,3,1);  System.out.println( );
+        System.out.println("                |   |                 |        ");
+        System.out.println("De Columna 1 a 0: " + this.totalTiquiTacaDeColumAColum(1, 0));
+        System.out.println("De Columna 1 a 2: " + this.totalTiquiTacaDeColumAColum(1, 2));
+        System.out.println("De Columna 1 a 3: " + this.totalTiquiTacaDeColumAColum(1, 3));
+        System.out.println("Total de 1 a otra :" + totalTiquiTacaDeColumACulaquierOtra(1));
+
+        System.out.println("De Columna 2 a 0: " + this.totalTiquiTacaDeColumAColum(2, 0));
+        System.out.println("De Columna 2 a 1: " + this.totalTiquiTacaDeColumAColum(2, 1));
+        System.out.println("De Columna 2 a 3: " + this.totalTiquiTacaDeColumAColum(2, 3));
+        System.out.println("Total de 2 a otra :" + totalTiquiTacaDeColumACulaquierOtra(2));
+        System.out.println("De Columna 3 a 0: " + this.totalTiquiTacaDeColumAColum(3, 0));
+        System.out.println("De Columna 3 a 1: " + this.totalTiquiTacaDeColumAColum(3, 1));
+        System.out.println("De Columna 3 a 2: " + this.totalTiquiTacaDeColumAColum(3, 2));
+        System.out.println("Total de 3 a otra :" + totalTiquiTacaDeColumACulaquierOtra(3));
+
+        System.out.println();
+
+        int tam = this.MayorSeguida(1);
+        System.out.println("tam es " + tam);
+        for (int i = 0; i <= tam; i++) {
+            seguidasTiquiTacaDeColumAColum(2,1 , i);
+        }
+        System.out.println();
+
+        /*     seguidasTiquiTacaDeColumAColum(1,3,1);  System.out.println( );
                 
                 seguidasTiquiTacaDeColumAColum(2,3,1);  System.out.println( );
                  seguidasTiquiTacaDeColumAColum(2,1,1);  System.out.println( );
@@ -460,9 +421,8 @@ public int tiquiTacaACero(int cantTiquiTaca) {
               seguidasTiquiTacaDeColumAColum(2,3,2);  System.out.println( )
                seguidasTiquiTacaDeColumAColum(3,1,2);  System.out.println( )
                 seguidasTiquiTacaDeColumAColum(3,2,2);  System.out.println( )*/
-        
     }
-    
+
     public int vecesRepetidas(int columna, int cantidad) {
 
         int cant = 0;
@@ -472,7 +432,7 @@ public int tiquiTacaACero(int cantTiquiTaca) {
         int anterior;
         int actual;
 
-        int tam = Columnas.BasesDatos.size()-1;
+        int tam = Columnas.BasesDatos.size() - 1;
 
         for (int i = 0; i < tam; i++) {
 
@@ -490,7 +450,6 @@ public int tiquiTacaACero(int cantTiquiTaca) {
                             //   System.out.println("anterio:  "+ anterior + " actual ; " +actual + "cant " + cant);
                             i++;//Incremento la i por k es cero en la siguiente estara i+c se pasarala i y alsigueitne.
                         }*/
-
                         cant++;
                     }
 
@@ -550,9 +509,9 @@ public int tiquiTacaACero(int cantTiquiTaca) {
         return cant;
 
     }
-    
- //hace un tikitaca
-public int MayorTiquiTaca(){
+
+    //hace un tikitaca
+    public int MayorTiquiTaca() {
         int cont1 = 0;
         int mayorTiquiTaca = 0;
 
@@ -563,33 +522,31 @@ public int MayorTiquiTaca(){
 
         for (int i = 0; i < tam; i++) {
 
-                datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
-                datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
-       
-                if (datoA != datoB) {
-                    //3!=2 cont1=1,,2!"=1cont1=1
-                        cont1++;
-                }else{
-                    //3 3, 2 2 mayorTiquiTaca=1
-                    if(mayorTiquiTaca < cont1){
-                        mayorTiquiTaca = cont1;
-                    }
-                    cont1=0;
+            datoA = datos[BasesDatos.get(i)].getColumna();//3 3 2 2
+            datoB = datos[BasesDatos.get(i + 1)].getColumna();//3 2 2 1
+
+            if (datoA != datoB) {
+                //3!=2 cont1=1,,2!"=1cont1=1
+                cont1++;
+            } else {
+                //3 3, 2 2 mayorTiquiTaca=1
+                if (mayorTiquiTaca < cont1) {
+                    mayorTiquiTaca = cont1;
                 }
-               
-            } 
-        
-        //Es cuando llega al final de BasesDatos y no hay repeticiones
-        if(mayorTiquiTaca < cont1){
-             mayorTiquiTaca = cont1;
+                cont1 = 0;
+            }
+
         }
-        
+
+        //Es cuando llega al final de BasesDatos y no hay repeticiones
+        if (mayorTiquiTaca < cont1) {
+            mayorTiquiTaca = cont1;
+        }
+
         return mayorTiquiTaca;
     }
-    
 
-        
- public int MayorSeguida(int columna, int num) {
+    public int MayorSeguida(int columna, int num) {
         int Mayor_seguida = 0;
         int cont1 = -1;
 
