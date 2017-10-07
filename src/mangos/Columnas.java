@@ -942,7 +942,7 @@ public class Columnas extends Estudio {
 
       
         int cero = this.totalCero();
-        int fichasGan = this.totalColumnaEn(col1) + this.totalColumnaEn(col2)+ (cero*34);
+        int fichasGan = this.totalColumnaEn(col1) + this.totalColumnaEn(col2)+ (cero*32);
         int fichasPer = ((totalColumna() - fichasGan)) * 5;
         
         int val = fichasGan - fichasPer;
