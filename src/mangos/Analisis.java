@@ -54,8 +54,8 @@ public class Analisis {
 ////////////////////////////////MIRAR COMO GANAR ESTA APUESTA/////////////////
     public void verFuncionesColumnas() {
 
-        this.Columna.verColumnas();
-        // this.Columna.apostarDosCol();
+       // this.Columna.verColumnas();
+        this.Columna.apostarDosCol();
        // this.Columna.ultimaColumRepe();
         //this.Columna.columnaUltTquiTaca();
         //this.Columna.vecesUltTquiTaca();

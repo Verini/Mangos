@@ -378,16 +378,51 @@ public class Columnas extends Estudio {
 
     public void verTiquiTacaColumColum() {
 
-        System.out.println("Total de veces que va de una columna a otra :");
-        System.out.println("                |   |                 |        ");
+        System.out.println("Total de veces que va de una columna a otra(resultado total en fichas.) :");
         System.out.println("De Columna 1 a 0: " + this.totalTiquiTacaDeColumAColum(1, 0));
         System.out.println("De Columna 1 a 2: " + this.totalTiquiTacaDeColumAColum(1, 2));
         System.out.println("De Columna 1 a 3: " + this.totalTiquiTacaDeColumAColum(1, 3));
         System.out.println("Total de 1 a otra :" + totalTiquiTacaDeColumACulaquierOtra(1));
-
         
         
-        this.verTiquiTacaDosColumnasSinRepetir();
+        System.out.println("Veces posibles que se juega al cambio:"+this.totalColumnaEn(1));
+        
+        
+        System.out.println( this.totalColumnaEn(1)-totalTiquiTacaDeColumACulaquierOtra(1)+" perdidas");
+        System.out.println(totalTiquiTacaDeColumACulaquierOtra(1)+" ganas");
+        
+        System.out.println("Total de veces que es 1 Columna - total de veces que cambia: "+ 
+                (totalTiquiTacaDeColumACulaquierOtra(1)-((this.totalColumnaEn(1)-totalTiquiTacaDeColumACulaquierOtra(1))*2)));
+        
+        
+        
+        System.out.println("------------------------------------------------");
+       
+        System.out.println("De Columna 2 a 0: " + this.totalTiquiTacaDeColumAColum(2, 0));
+        System.out.println("De Columna 2 a 1: " + this.totalTiquiTacaDeColumAColum(2, 1));
+        System.out.println("De Columna 2 a 3: " + this.totalTiquiTacaDeColumAColum(2, 3));
+        System.out.println("Total de 2 a otra :" + totalTiquiTacaDeColumACulaquierOtra(2));
+         System.out.println(this.totalColumnaEn(2)-totalTiquiTacaDeColumACulaquierOtra(2)+" perdidas");
+         System.out.println("Total de veces que es 2 Columna - total de veces que cambia: "+ 
+                (totalTiquiTacaDeColumACulaquierOtra(2)-((this.totalColumnaEn(2)-totalTiquiTacaDeColumACulaquierOtra(2))*2)));
+        
+        System.out.println("------------------------------------------------");
+        
+        
+        System.out.println("De Columna 3 a 0: " + this.totalTiquiTacaDeColumAColum(3, 0));
+        System.out.println("De Columna 3 a 1: " + this.totalTiquiTacaDeColumAColum(3, 1));
+        System.out.println("De Columna 3 a 2: " + this.totalTiquiTacaDeColumAColum(3, 2));
+        System.out.println("Total de 3 a otra :" + totalTiquiTacaDeColumACulaquierOtra(3));
+         System.out.println(this.totalColumnaEn(3)-totalTiquiTacaDeColumACulaquierOtra(3)+" perdidas");
+         System.out.println("Total de veces que es 3 Columna - total de veces que cambia: "+ 
+                (totalTiquiTacaDeColumACulaquierOtra(3)-((this.totalColumnaEn(3)-totalTiquiTacaDeColumACulaquierOtra(3))*2)));
+        System.out.println("------------------------------------------------");
+        
+        
+        
+        
+        
+       // this.verTiquiTacaDosColumnasSinRepetir();
         
         
         
@@ -903,6 +938,19 @@ public class Columnas extends Estudio {
         System.out.println("\tFichas que se Ganan solo apostando Columnas " + col1 + " " + col2 + ": " + val);
         return true;
     }
+      private boolean datosDosColumnasCeros(int col1, int col2) {
+
+      
+        int cero = this.totalCero();
+        int fichasGan = this.totalColumnaEn(col1) + this.totalColumnaEn(col2)+ (cero*34);
+        int fichasPer = ((totalColumna() - fichasGan)) * 5;
+        
+        int val = fichasGan - fichasPer;
+        System.out.println("\tFichas que se Ganan solo apostando a 0 y Columnas " + col1 + " " + col2 + ": " + val);
+        return true;
+    }
+    
+    
 
     public String apostarDosCol() {
 
@@ -913,9 +961,12 @@ public class Columnas extends Estudio {
         Valor = Valor + "\tColumna 2,3: " + this.conteoDosColumnas(3, 2) + " Columna 1:" + this.totalColumnaEn(1) + "\n";
         System.out.println(Valor);
         System.out.println("\tHacer apuestas :");
-        this.datosDosColumnas(1, 2);
-        this.datosDosColumnas(3, 2);
-        this.datosDosColumnas(1, 3);
+        //this.datosDosColumnas(1, 2);
+        this.datosDosColumnasCeros(1, 2);
+        //this.datosDosColumnas(3, 2);
+        this.datosDosColumnasCeros(3, 2);
+      //  this.datosDosColumnas(1, 3);
+        this.datosDosColumnasCeros(1, 3);
 
         return Valor;
     }
@@ -1136,7 +1187,14 @@ public class Columnas extends Estudio {
 
         return "";
     }
+/**
+ *    Apostamo a la columna siempre y movemos la otra ficha a las otras a ver k tal es lso posecentages 
+ *  de acierto.
+ */
+public void apuestaColumnaMoverMasVieja(int columna){
 
+
+}
 ////////////////////////////////////////////////////////////////////////////////   
 
     /*

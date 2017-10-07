@@ -20,8 +20,8 @@ public class Mangos {
     public static void main(String[] args) {
 
       
-     // utilizarAleatorio();
-     utilzarDatos();
+      utilizarAleatorio();
+     //utilzarDatos();
 
     }
 
