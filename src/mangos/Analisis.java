@@ -55,7 +55,7 @@ public class Analisis {
     public void verFuncionesColumnas() {
 
        // this.Columna.verColumnas();
-        this.Columna.apostarDosCol();
+      //  this.Columna.apostarDosCol();
        // this.Columna.ultimaColumRepe();
         //this.Columna.columnaUltTquiTaca();
         //this.Columna.vecesUltTquiTaca();
@@ -67,6 +67,15 @@ public class Analisis {
 
     }
 
+    public void verNumeros(int numero){
+    
+       // this.Color.todoLoContrario(numero);
+    //  this.Color.verNumeroContrarios(numero);
+      //this.Color.verSolo(numero);
+      this.Color.verSoloDistinto(numero);
+    }
+    
+    
     public void verFuncionesLineas() {
         this.Linea.verLineas();
         this.Linea.conteoCuantasLineasEn10(30);

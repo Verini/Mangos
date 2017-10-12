@@ -40,9 +40,11 @@ public class Mangos {
         Analisis Juego = new Analisis(BasesDatos);
 
         System.out.println("___________________________________________");
-     Juego.toString();
+   //  Juego.toString();
 
-        Juego.verFuncionesColumnas();
+      // Juego.verFuncionesColumnas();
+       
+            Juego.verNumeros(15);
        //  Juego.verFuncionesLineas();
         //Juego.verFuncionesDocenas();
         //Juego.verFuncionesCombinadas();
@@ -72,7 +74,9 @@ public class Mangos {
         System.out.println("___________________________________________");
         Juego.toString();
 
-        Juego.verFuncionesColumnas();
+        //Juego.verFuncionesColumnas();
+      
+        
         // Juego.verFuncionesLineas();
         //Juego.verFuncionesDocenas();
         //Juego.verFuncionesCombinadas();

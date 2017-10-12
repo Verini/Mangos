@@ -132,6 +132,22 @@ public class Numero {
     public int getLinea() {
         return fila;
     }
+
+    public boolean isPar() {
+        return par;
+    }
+
+    public boolean isColor() {
+        return color;
+    }
+
+    public int getMitad() {
+        return mitad;
+    }
+
+    public int getFila() {
+        return fila;
+    }
     
     
     @Override
