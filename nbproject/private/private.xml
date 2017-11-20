@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Analisis.java</file>
             <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Mangos.java</file>
+            <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Numero.java</file>
+            <file>file:/C:/Users/jai/juegos/Mangos/src/apuestas/ApuestaColor.java</file>
             <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Columnas.java</file>
-            <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Lineas.java</file>
+            <file>file:/C:/Users/jai/juegos/Mangos/src/seguir/SeguirCambioColumnasDocenas.java</file>
+            <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/verCambios/AnalisisDeCambios.java</file>
             <file>file:/C:/Users/jai/juegos/Mangos/src/mangos/Estudio.java</file>
         </group>
     </open-files>

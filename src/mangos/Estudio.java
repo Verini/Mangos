@@ -6,12 +6,19 @@
  */
 package mangos;
 
+import apuestas.ApuestaColor;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.concurrent.Callable;
+import mangos.verCambios.AnalisisDeCambios;
 
 /**
  *
@@ -19,9 +26,14 @@ import java.util.Set;
  */
 public class Estudio {
 
+    public static Method getMethod(String unaVariableString, Class<String> aClass) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     
+    }
+
     protected Numero[] datos;
     protected static ArrayList<Integer> BasesDatos;
-
+    
 ///////////////////////////BASICA///////////////////////////////////////////////
     public Estudio(Numero[] datos, ArrayList BasesDatos) {
         this.datos = datos;
@@ -35,7 +47,13 @@ public class Estudio {
     public int getTamBasesDatos() {
         return Estudio.BasesDatos.size();
     }
-
+   public void Apuestas(){
+        
+             
+        
+        ApuestaColor Apu =new ApuestaColor(this.datos,this.BasesDatos);
+      System.out.println(Apu);
+    }
     @Override
     public String toString() {
         String valor = "";
@@ -51,6 +69,27 @@ public class Estudio {
         }
 
         return valor;
+
+    }
+
+    private int[] retornarVerSet(SortedSet<Integer> set) {
+
+        Iterator<Integer> myListIterator = set.iterator();
+        int tam = 0;
+        int[] resul = new int[set.size()];
+
+        while (myListIterator.hasNext()) {
+            Integer dato = myListIterator.next();
+
+            System.out.print(" " + dato);
+            resul[tam] = dato;
+            tam++;
+        }
+ System.out.print("--->" + tam);
+        System.out.println();
+        //Arrays.sort(resul);
+
+        return resul;
 
     }
 
@@ -153,16 +192,14 @@ public class Estudio {
                 otro4++;
             } else if (contarNumero(0, dato, i) == 3) {
                 otro3++;
+            } else if (contarNumero(0, dato, i) == 2) {
+                otro2++;
+            } else if (contarNumero(0, dato, i) == 1) {
+
+                otro1++;
             } else {
-                if (contarNumero(0, dato, i) == 2) {
-                    otro2++;
-                } else if (contarNumero(0, dato, i) == 1) {
+                otro++;
 
-                    otro1++;
-                } else {
-                    otro++;
-
-                }
             }
         }
         System.out.println("Numeor frio : " + otro10 + " " + otro9 + " " + otro8 + " " + " " + otro7 + " "
@@ -387,9 +424,10 @@ public class Estudio {
 
     }
 
-    private void todoIgualMenosColor(int num) {
+    private int[] todoIgualMenosColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
+
         System.out.print("Todo igual menos Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -410,18 +448,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoIgualMenosPar(int num) {
+    private int[] todoIgualMenosPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo igual menos Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -442,19 +474,13 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
     /*Docena y mitad*/
-    private void todoIgualMenosMitad(int num) {
+    private int[] todoIgualMenosMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo igual menos Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -474,18 +500,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoIgualMenosDocenas(int num) {
+    private int[] todoIgualMenosDocenas(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo igual menos Docenas: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -505,19 +525,12 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoIgualMenosColumna(int num) {
+    private int[] todoIgualMenosColumna(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo igual menos Columna: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -537,18 +550,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualMitadParColor(int num) {
+    private int[] todoLoContrarioIgualMitadParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena,Mitad,Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -568,18 +575,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocenaMitadColor(int num) {
+    private int[] todoLoContrarioIgualDocenaMitadColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena,Mitad,Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -599,18 +600,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocenaMitadPar(int num) {
+    private int[] todoLoContrarioIgualDocenaMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena,Mitad,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -630,18 +625,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaDocenaColor(int num) {
+    private int[] todoLoContrarioIgualColumnaDocenaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna,Docena,Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -661,18 +650,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaDocenaPar(int num) {
+    private int[] todoLoContrarioIgualColumnaDocenaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna,Docena,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -692,18 +675,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaDocenaMitad(int num) {
+    private int[] todoLoContrarioIgualColumnaDocenaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna,Docena,Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -723,18 +700,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualMitadColor(int num) {
+    private int[] todoLoContrarioIgualMitadColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Mitad y Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -754,18 +725,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualMitadPar(int num) {
+    private int[] todoLoContrarioIgualMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Mitad y Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -784,19 +749,12 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocenaColor(int num) {
+    private int[] todoLoContrarioIgualDocenaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena y Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -815,19 +773,12 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocenaPar(int num) {
+    private int[] todoLoContrarioIgualDocenaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena y Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -847,18 +798,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocenaMitad(int num) {
+    private int[] todoLoContrarioIgualDocenaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Docena y Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -878,18 +823,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaColor(int num) {
+    private int[] todoLoContrarioIgualColumnaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna y Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -909,18 +848,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaPar(int num) {
+    private int[] todoLoContrarioIgualColumnaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna y Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -939,19 +872,12 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaMitad(int num) {
+    private int[] todoLoContrarioIgualColumnaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna y Docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -971,18 +897,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumnaDocena(int num) {
+    private int[] todoLoContrarioIgualColumnaDocena(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna y Docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1002,18 +922,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColor(int num) {
-        int otro = 0;
-        Set<Integer> set = new HashSet<>();
+    private int[] todoLoContrarioIgualColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1033,18 +947,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualPar(int num) {
+    private int[] todoLoContrarioIgualPar(int num) {
         int otro = 0;
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1064,18 +972,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrario(int num) {
+    private int[] todoLoContrario(int num) {
         int otro = 0;
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1095,18 +997,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualMitad(int num) {
-        int otro = 0;
-        Set<Integer> set = new HashSet<>();
+    private int[] todoLoContrarioIgualMitad(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1125,19 +1021,12 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualColumna(int num) {
+    private int[] todoLoContrarioIgualColumna(int num) {
         int otro = 0;
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual Columna: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1157,18 +1046,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
-    private void todoLoContrarioIgualDocena(int num) {
+    private int[] todoLoContrarioIgualDocena(int num) {
         int otro = 0;
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Todo lo contrario igual docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1187,38 +1070,524 @@ public class Estudio {
             }
 
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-        }
-        System.out.println();
+        return this.retornarVerSet(set);
     }
 
     
+
     public void verSoloDistinto(int num) {
-        
-         this.verSoloDistintoUno(num);
-  /*      this.verSoloDistintoDos(num);
-        this.verSoloDistintoTres(num);
-        this.verSoloDistintoCuatro(num);*/
-    
-    
-    }
-    
-    private void verSoloDistintoUno(int num){
-       this.soloDistintoColumna(num);
-       this.soloDistintoDocena(num);
-       this.soloDistintoMitad(num);
-       this.soloDistintoColor(num);
-       this.soloDistintoPar(num);
-    
-    }
-     private int[] soloDistintoColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        this.verSoloDistintoUno(num);
+        this.verSoloDistintoDos(num);
+        this.verSoloDistintoTres(num);
+        this.verSoloDistintoCuatro(num);
+
+    }
+    
+    private void verSoloDistintoCuatro(int num) {
+
+        this.soloDistintoColumnaDocenaMitadPar(num);
+        this.soloDistintoColumnaDocenaMitadColor(num);
+        this.soloDistintoColumnaDocenaParColor(num);
+        this.soloDistintoColumnaMitadParColor(num);
+        this.soloDistintoDocenaMitadParColor(num);
+
+    }
+
+    private int[] soloDistintoDocenaMitadParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto  Docena,Mitad,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].getMitad() !=  datos[i].getMitad()) {
+                    if (datos[num].isPar()!=  datos[i].isPar()) {
+                        if (datos[num].isColor() !=  datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaMitadParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Mitad,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() !=  datos[i].getColumna()) {
+                if (datos[num].getMitad() !=  datos[i].getMitad()) {
+                    if (datos[num].isPar() !=  datos[i].isPar()) {
+                        if (datos[num].isColor() !=  datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaDocenaParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna()!= datos[i].getColumna()) {
+                if (datos[num].getDocena() !=  datos[i].getDocena()) {
+                    if (datos[num].isPar() !=  datos[i].isPar()) {
+                        if (datos[num].isColor() !=  datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaDocenaMitadColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Mitad,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() !=  datos[i].getColumna()) {
+                if (datos[num].getDocena() !=  datos[i].getDocena()) {
+                    if (datos[num].getMitad()!=  datos[i].getMitad()) {
+                        if (datos[num].isColor()!=  datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaDocenaMitadPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Mitad,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna()!=  datos[i].getColumna()) {
+                if (datos[num].getDocena() !=  datos[i].getDocena()) {
+                    if (datos[num].getMitad() !=  datos[i].getMitad()) {
+                        if (datos[num].isPar() !=  datos[i].isPar()) {
+                            set.add(i);
+                        }
+                    }
+                }
+            }
+        }
+        return this.retornarVerSet(set);
+    }
+    
+    
+    
+    
+  private void verSoloDistintoTres(int num) {
+
+        this.soloDistintoColumnaDocenaPar(num);
+        this.soloDistintoColumnaDocenaColor(num);
+        this.soloDistintoColumnaDocenaMitad(num);
+        this.soloDistintoColumnaMitadPar(num);
+        this.soloDistintoColumnaMitadColor(num);
+        this.soloDistintoColumnaParColor(num);
+        this.soloDistintoDocenaMitadPar(num);
+        this.soloDistintoDocenaMitadColor(num);
+        this.soloDistintoDocenaParColor(num);
+        this.soloDistintoMitadParColor(num);
+    }
+
+    private int[] soloDistintoMitadParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Mitad,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getMitad() != datos[i].getMitad()) {
+                if (datos[num].isPar() != datos[num].isPar()) {
+                    if (datos[num].isColor() != datos[i].isColor()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].isPar() != datos[num].isPar()) {
+                    if (datos[num].isColor()!= datos[i].isColor()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaMitadColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Mitad,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena()!=datos[i].getDocena()) {
+                if (datos[num].getMitad() != datos[num].getMitad()) {
+                    if (datos[num].isColor()!= datos[i].isColor()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaMitadPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Mitad,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].getMitad() != datos[num].getMitad()) {
+                    if (datos[num].isPar() != datos[i].isPar()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Par,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].isColor() != datos[i].isColor()) {
+                    if (datos[num].isPar() != datos[i].isPar()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaMitadColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Mitad,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].isColor() != datos[i].isColor()) {
+                    if (datos[num].getMitad()!= datos[i].getMitad()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaMitadPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Mitad,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].isPar() != datos[i].isPar()) {
+                    if (datos[num].getMitad() != datos[i].getMitad()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    /*
+    * Docena y mitad coge 4 nuemro en 1 yh 3 docen y coge en 2 en la 2 docenal
+    * solo cambia ahii no se si era utili
+     */
+    private int[] soloDistintoColumnaDocenaMitad(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Mitad: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna()!= datos[i].getColumna()) {
+                if (datos[num].getDocena()!= datos[i].getDocena()) {
+                    if (datos[num].getMitad()!= datos[i].getMitad()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaDocenaColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna()!= datos[i].getColumna()) {
+                if (datos[num].getDocena() != datos[i].getDocena()) {
+                    if (datos[num].isColor() != datos[i].isColor()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaDocenaPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].getDocena() != datos[i].getDocena()) {
+                    if (datos[num].isPar() != datos[i].isPar()) {
+                        set.add(i);
+                    }
+                }
+            }
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    
+    
+    private void verSoloDistintoDos(int num) {
+
+        this.soloDistintoColumnaDocena(num);
+        this.soloDistintoColumnaMitad(num);
+        this.soloDistintoColumnaPar(num);
+        this.soloDistintoColumnaColor(num);
+        this.soloDistintoDocenaColor(num);
+        this.soloDistintoDocenaPar(num);
+        this.soloDistintoDocenaMitad(num);
+        this.soloDistintoColorMitad(num);
+        this.soloDistintoColorPar(num);
+        this.soloDistintoMitadPar(num);
+
+    }
+
+    private int[] soloDistintoMitadPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Mitad,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getMitad() != datos[i].getMitad()) {
+                if (datos[num].isPar() != datos[i].isPar()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColorPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Color,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].isColor() != datos[i].isColor()) {
+                if (datos[num].isPar() != datos[i].isPar()) {
+                    set.add(i);
+                }
+            }
+
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColorMitad(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Color,Mitad: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].isColor() != datos[i].isColor()) {
+                if (datos[num].getMitad() != datos[i].getMitad()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaMitad(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Mitad: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].getMitad() != datos[i].getMitad()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].isPar() != datos[i].isPar()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoDocenaColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Docena,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getDocena() != datos[i].getDocena()) {
+                if (datos[num].isColor() != datos[i].isColor()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Color: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].isColor() != datos[i].isColor()) {
+                    set.add(i);
+                }
+            }
+
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaMitad(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Mitad: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].getMitad() != datos[i].getMitad()) {
+                    set.add(i);
+                }
+            }
+
+        }
+        return this.retornarVerSet(set);
+    }
+
+    private int[] soloDistintoColumnaPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Par: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].isPar() != datos[i].isPar()) {
+                    set.add(i);
+                }
+            }
+
+        }
+
+        return this.retornarVerSet(set);
+
+    }
+
+    private int[] soloDistintoColumnaDocena(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Distinto Columna,Docena: ");
+        for (int i = 0; i <= 36; i++) {
+
+            if (datos[num].getColumna() != datos[i].getColumna()) {
+                if (datos[num].getDocena() != datos[i].getDocena()) {
+                    set.add(i);
+                }
+            }
+
+        }
+
+        return this.retornarVerSet(set);
+    }
+
+    private void verSoloDistintoUno(int num) {
+        this.soloDistintoColumna(num);
+        this.soloDistintoDocena(num);
+        this.soloDistintoMitad(num);
+        this.soloDistintoColor(num);
+        this.soloDistintoPar(num);
+
+    }
+
+    private int[] soloDistintoColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Distinto Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1228,27 +1597,13 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
+        return this.retornarVerSet(set);
 
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
     }
 
     private int[] soloDistintoPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Distinto Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1258,27 +1613,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloDistintoMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Distinto Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1288,27 +1628,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloDistintoDocena(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Distinto Docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1318,27 +1643,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloDistintoColumna(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Distinto Columna: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1347,25 +1657,9 @@ public class Estudio {
                 set.add(i);
             }
         }
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
+
     public void verSolo(int num) {
 
         this.verSoloIgualUno(num);
@@ -1374,561 +1668,314 @@ public class Estudio {
         this.verSoloIgualCuatro(num);
 
     }
-    
-    private void verSoloIgualCuatro(int num){
-    
+
+    private void verSoloIgualCuatro(int num) {
+
         this.soloIgualColumnaDocenaMitadPar(num);
         this.soloIgualColumnaDocenaMitadColor(num);
         this.soloIgualColumnaDocenaParColor(num);
         this.soloIgualColumnaMitadParColor(num);
         this.soloIgualDocenaMitadParColor(num);
-    
-    
+
     }
-    
+
     private int[] soloIgualDocenaMitadParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
-        System.out.print("Distinto Docena,Mitad,Par,Color: ");
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Misma  Docena,Mitad,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getDocena() == datos[i].getDocena()) {
                 if (datos[num].getMitad() == datos[i].getMitad()) {
-                if (datos[num].isPar()== datos[i].isPar() ) {
-                    if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                    if (datos[num].isPar() == datos[i].isPar()) {
+                        if (datos[num].isColor() == datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
                 }
             }
-            }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
+
     private int[] soloIgualColumnaMitadParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
-        System.out.print("Distinto Columna,Mitad,Par,Color: ");
+        SortedSet<Integer> set = new TreeSet<>();
+        System.out.print("Misma Columna,Mitad,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getMitad() == datos[i].getMitad()) {
-                if (datos[num].isPar()== datos[i].isPar() ) {
-                    if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                    if (datos[num].isPar() == datos[i].isPar()) {
+                        if (datos[num].isColor() == datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
                 }
             }
-            }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
-    
-     private int[] soloIgualColumnaDocenaParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private int[] soloIgualColumnaDocenaParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].isPar()== datos[i].isPar() ) {
-                    if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                    if (datos[num].isPar() == datos[i].isPar()) {
+                        if (datos[num].isColor() == datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
                 }
             }
-            }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
+
     private int[] soloIgualColumnaDocenaMitadColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Mitad,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].getMitad() == datos[i].getMitad() ) {
-                    if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                    if (datos[num].getMitad() == datos[i].getMitad()) {
+                        if (datos[num].isColor() == datos[i].isColor()) {
+                            set.add(i);
+                        }
+                    }
                 }
             }
-            }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
+
     private int[] soloIgualColumnaDocenaMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Mitad,Par: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].getMitad() == datos[i].getMitad() ) {
-                    if (datos[num].isPar() == datos[i].isPar()) {
-                    set.add(i);
+                    if (datos[num].getMitad() == datos[i].getMitad()) {
+                        if (datos[num].isPar() == datos[i].isPar()) {
+                            set.add(i);
+                        }
+                    }
                 }
             }
-            }
-            }
         }
-
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-      
-      
-    private void verSoloIgualTres(int num){
-        
-           this.soloIgualColumnaDocenaPar(num);
-           this.soloIgualColumnaDocenaColor(num);
-           this.soloIgualColumnaDocenaMitad(num);
-           this.soloIgualColumnaMitadPar(num);
-           this.soloIgualColumnaMitadColor(num);
-           this.soloIgualColumnaParColor(num);       
-           this.soloIgualDocenaMitadPar(num);
-           this.soloIgualDocenaMitadColor(num);
-           this.soloIgualDocenaParColor(num);
-           this.soloIgualMitadParColor(num);
-    }
-    
-    
-    
-     private int[] soloIgualMitadParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private void verSoloIgualTres(int num) {
+        System.out.println("Numeor : " + num );
+        this.soloIgualColumnaDocenaPar(num);
+        this.soloIgualColumnaDocenaColor(num);
+        this.soloIgualColumnaDocenaMitad(num);
+        this.soloIgualColumnaMitadPar(num);
+        this.soloIgualColumnaMitadColor(num);
+        this.soloIgualColumnaParColor(num);
+        this.soloIgualDocenaMitadPar(num);
+        this.soloIgualDocenaMitadColor(num);
+        this.soloIgualDocenaParColor(num);
+        this.soloIgualMitadParColor(num);
+    }
+
+    private int[] soloIgualMitadParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Mitad,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getMitad() == datos[i].getMitad()) {
-                 if (datos[num].isPar() ==datos[num].isPar()) {
-                     if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                if (datos[num].isPar() == datos[num].isPar()) {
+                    if (datos[num].isColor() == datos[i].isColor()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
+
     private int[] soloIgualDocenaParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].isPar() ==datos[num].isPar()) {
-                     if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                if (datos[num].isPar() == datos[num].isPar()) {
+                    if (datos[num].isColor() == datos[i].isColor()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-          
-        
+
     private int[] soloIgualDocenaMitadColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Mitad,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].getMitad() ==datos[num].getMitad()) {
-                     if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                if (datos[num].getMitad() == datos[num].getMitad()) {
+                    if (datos[num].isColor() == datos[i].isColor()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-          
-          
-       private int[] soloIgualDocenaMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private int[] soloIgualDocenaMitadPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Mitad,Par: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].getMitad() ==datos[num].getMitad()) {
+                if (datos[num].getMitad() == datos[num].getMitad()) {
                     if (datos[num].isPar() == datos[i].isPar()) {
-                    set.add(i);
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-       
-       
-     private int[] soloIgualColumnaParColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private int[] soloIgualColumnaParColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Par,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].isColor() == datos[i].isColor()) {
                     if (datos[num].isPar() == datos[i].isPar()) {
-                    set.add(i);
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-     
-     private int[] soloIgualColumnaMitadColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private int[] soloIgualColumnaMitadColor(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Mitad,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].isColor() == datos[i].isColor()) {
-                if (datos[num].getMitad()== datos[i].getMitad()) {
-                    set.add(i);
+                    if (datos[num].getMitad() == datos[i].getMitad()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
+
     private int[] soloIgualColumnaMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Mitad,Par: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].isPar() == datos[i].isPar()) {
-                if (datos[num].getMitad()== datos[i].getMitad()) {
-                    set.add(i);
+                    if (datos[num].getMitad() == datos[i].getMitad()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-    
-    
-    
+
     /*
     * Docena y mitad coge 4 nuemro en 1 yh 3 docen y coge en 2 en la 2 docenal
     * solo cambia ahii no se si era utili
-    */
+     */
     private int[] soloIgualColumnaDocenaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].getMitad()== datos[i].getMitad()) {
-                    set.add(i);
+                    if (datos[num].getMitad() == datos[i].getMitad()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-     
-    
+
     private int[] soloIgualColumnaDocenaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Color: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].isColor() == datos[i].isColor()) {
-                    set.add(i);
+                    if (datos[num].isColor() == datos[i].isColor()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-     
-     
-     
-     private int[] soloIgualColumnaDocenaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+    private int[] soloIgualColumnaDocenaPar(int num) {
+
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena,Par: ");
         for (int i = 0; i <= 36; i++) {
 
             if (datos[num].getColumna() == datos[i].getColumna()) {
                 if (datos[num].getDocena() == datos[i].getDocena()) {
-                if (datos[num].isPar() == datos[i].isPar()) {
-                    set.add(i);
+                    if (datos[num].isPar() == datos[i].isPar()) {
+                        set.add(i);
+                    }
                 }
             }
-            }
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
-     
-    
+
     private void verSoloIgualDos(int num) {
 
         this.soloIgualColumnaDocena(num);
@@ -1946,7 +1993,7 @@ public class Estudio {
 
     private int[] soloIgualMitadPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Mitad,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1958,27 +2005,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColorPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Color,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -1990,27 +2022,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColorMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Color,Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2022,27 +2039,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualDocenaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2054,27 +2056,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualDocenaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2086,27 +2073,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualDocenaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena,Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2118,27 +2090,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColumnaColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2150,27 +2107,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColumnaMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2182,27 +2124,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColumnaPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2214,27 +2141,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColumnaDocena(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna,Docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2246,22 +2158,7 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private void verSoloIgualUno(int num) {
@@ -2275,7 +2172,7 @@ public class Estudio {
 
     private int[] soloIgualColor(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Color: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2285,27 +2182,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualPar(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Par: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2315,27 +2197,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualMitad(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Mitad: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2345,27 +2212,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualDocena(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Docena: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2375,27 +2227,12 @@ public class Estudio {
 
         }
 
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
     private int[] soloIgualColumna(int num) {
 
-        Set<Integer> set = new HashSet<>();
+        SortedSet<Integer> set = new TreeSet<>();
         System.out.print("Misma Columna: ");
         for (int i = 0; i <= 36; i++) {
 
@@ -2404,23 +2241,80 @@ public class Estudio {
                 set.add(i);
             }
         }
-        Iterator<Integer> myListIterator = set.iterator();
-        int tam = 0;
-        int[] resul = new int[set.size()];
-
-        while (myListIterator.hasNext()) {
-            Integer dato = myListIterator.next();
-
-            System.out.print(" " + dato);
-            resul[tam] = dato;
-            tam++;
-        }
-
-        System.out.println();
-        Arrays.sort(resul);
-
-        return resul;
+        return this.retornarVerSet(set);
     }
 
+    public void mirarCambiosEnTodasLasApuestas(){
+           
+        AnalisisDeCambios Analiza = new AnalisisDeCambios(this.datos,this.BasesDatos);
+      
+        Analiza.verCuentameCambio();
+       // Analiza.verMaxVecesSeguidasCambio();
+        
+        //this.verSoloDistintoTres(3);
+       //this.verSoloIgualTres(3);
+     for(int i=0;i<37;i++){
+     this.verSoloIgualTres(i);
+     
+     }
+    }
+    
+    public void verDatosNumeroSeRepite(){
+    
+        for (int i = 0; i <= 36; i++) {
+                System.out.println("Numero"+ i +": "+ mayorNumeorDeVecesQueSeRepiteNumero(i));
+        }
+    
+    
+    }
+    
+    public int mayorNumeorDeVecesQueSeRepiteNumero(int num){
+    int cont=-1;
+    int mayor=0;
+      for (int i = 0; i < this.BasesDatos.size(); i++) {
+            if ( this.BasesDatos.get(i) == num) {
+                cont++;
+            }else{
+                if(cont>mayor){
+                    mayor=cont;
+                }
+                cont = -1;
+            }
+        }
+      return mayor;
+    }
+   
+    
+    
+    public void estudioDeLosCambio(){
+        
+        AnalisisDeCambios Analiza = new AnalisisDeCambios(this.datos,this.BasesDatos);
+       // System.out.print(Analiza.toString());
+        //Analiza.cuentameCambio();
+        
+       // System.out.println(" Docena color:" + Analiza.maxVecesSeguidasNoCambioDocenaColor());
+       // Analiza.verMaxVecesSeguidasCambio();
+        Analiza.verTodoDocenaColor();
+    for(int i=0;i<37;i++){
+        //this.soloIgualColumnaDocena(i); 4
+        
+        //this.soloIgualDocenaColor(i);
+    //   this.soloDistintoColumnaColor(i);
+         //this.soloDistintoColorPar(i);10
+      //  this.
+     // this.soloIgualDocenaColor(i);//6 en cad doce
+ //this.soloDistintoColumnaPar(i);//13
+//this.soloDistintoDocenaPar(i);
+  //this.soloDistintoColorMitad(i);
+  //this.soloDistintoMitadPar(i);
+  //this.soloDistintoDocenaMitad(i);
+ // this.soloDistintoColumnaMitad(i);
+  //this.soloDistintoColumnaDocena(i);
+    }
+       //6 
+     
+   
+        
+    }
 ////////////////////////////////////////////////////////////////////////////////
 }

@@ -5,8 +5,14 @@
  */
 package mangos;
 
+import apuestas.ApuestaCambioColuFila;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import seguir.SeguirCambioColumnasDocenas;
+
 
 /**
  *
@@ -20,40 +26,96 @@ public class Mangos {
     public static void main(String[] args) {
 
       
-      utilizarAleatorio();
-     //utilzarDatos();
-
+    // utilizarAleatorio();
+    // utilzarDatos();
+    utilzarDatosColumFila();
+      //  seguir();
     }
-
+    
+    
+    
+    public static void seguir(){
+        Scanner entrada = new Scanner(System.in);
+        int nuevoDato;
+        System.out.print("Ingrese numero: "); 
+        SeguirCambioColumnasDocenas Datos =new SeguirCambioColumnasDocenas(0); 
+        while(true){
+            nuevoDato = entrada.nextInt();
+            Datos.ingresNuevoDatos(nuevoDato);
+            Datos.showDatos();
+            System.out.print("Ingrese numero: ");
+        }
+    }
     public static void utilizarAleatorio() {
 
         ArrayList BasesDatos = new ArrayList<>();
+        
+       
+
         Random rand = new Random();
         int x = rand.nextInt(100);
-        for (int i = 0; i < 100 ;i++) {
+        for (int i = 0; i < 100;i++) {
 
             BasesDatos.add((int) (Math.random() * (37 - 0)));
             // System.out.println(BasesDatos.get(i));
 
         }
 
+        
+       ApuestaCambioColuFila Apu = new ApuestaCambioColuFila(BasesDatos);
+      
+                
+        Analisis Juego = new Analisis(BasesDatos);
+        
+
+        System.out.println("___________________________________________");
+  //Juego.toString();
+//Juego.AnalizaApuesta();
+      // Juego.verFuncionesColumnas();
+     //  Juego.analizarElCambioEnApuestas();
+        //    Juego.verNumeros(33);
+       //  Juego.verFuncionesLineas();
+        //Juego.verFuncionesDocenas();
+      Juego.verFuncionesCombinadas();
+    }
+    
+    
+   public static void utilzarDatosColumFila() {
+
+        ArrayList BasesDatos = new ArrayList<>();
+        int[] datos = {1,1,36,1};
+           
+
+     
+        for (int i = 0; i < datos.length; i++) {
+
+            BasesDatos.add(datos[i]);
+
+        }
+       ApuestaCambioColuFila Apu = new ApuestaCambioColuFila(BasesDatos);
         Analisis Juego = new Analisis(BasesDatos);
 
         System.out.println("___________________________________________");
-   //  Juego.toString();
-
-      // Juego.verFuncionesColumnas();
-       
-            Juego.verNumeros(15);
-       //  Juego.verFuncionesLineas();
+       // Juego.toString();
+  //Juego.toString();
+//Juego.AnalizaApuesta();
+        //Juego.verFuncionesColumnas();
+      
+        
+        // Juego.verFuncionesLineas();
         //Juego.verFuncionesDocenas();
-        //Juego.verFuncionesCombinadas();
+       Juego.verFuncionesCombinadas();
+
     }
+
+
+
+    
 
     public static void utilzarDatos() {
 
         ArrayList BasesDatos = new ArrayList<>();
-        int[] datos = {1, 2, 1, 2, 1};
+        int[] datos = {1,1, 1, 2,2};
            
             
             
@@ -72,8 +134,9 @@ public class Mangos {
         Analisis Juego = new Analisis(BasesDatos);
 
         System.out.println("___________________________________________");
-        Juego.toString();
-
+       // Juego.toString();
+  Juego.toString();
+Juego.AnalizaApuesta();
         //Juego.verFuncionesColumnas();
       
         

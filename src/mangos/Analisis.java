@@ -6,6 +6,7 @@
 package mangos;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -41,7 +42,13 @@ public class Analisis {
         //System.out.println("akiii siii " + this.datos[this.BasesDatos.get(8)].getColumna());
         //this.verBasesDatos();
     }
-
+ 
+    public void AnalizaApuesta(){
+            this.Columna.Apuestas();
+            this.Color.verDatosNumeroSeRepite();
+  
+    }
+    
     public void analisis() {
 
     }
@@ -71,10 +78,15 @@ public class Analisis {
     
        // this.Color.todoLoContrario(numero);
     //  this.Color.verNumeroContrarios(numero);
-      //this.Color.verSolo(numero);
-      this.Color.verSoloDistinto(numero);
+       //this.Color.verSolo(numero);
+     //this.Color.verSoloDistinto(numero);
+ 
+    //    this.Columna.estudioDeLosCambio();
+        
     }
-    
+    public void analizarElCambioEnApuestas(){
+          this.Color.mirarCambiosEnTodasLasApuestas();
+    }
     
     public void verFuncionesLineas() {
         this.Linea.verLineas();
